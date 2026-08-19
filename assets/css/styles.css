@@ -1,0 +1,496 @@
+/* ThermoCool 外贸独立站样式表 */
+/* 变量、响应式布局、移动端菜单、滚动动画 */
+
+:root {
+  /* 品牌色 */
+  --primary: #0a3d62;
+  --primary-light: #14588a;
+  --accent: #ffd166;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --bg: #ffffff;
+  --bg-alt: #f6f9fc;
+  --border: #e2e8f0;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --radius: 14px;
+  --container: 1180px;
+  --header-h: 72px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; height: auto; display: block; }
+a { color: var(--primary); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--primary-light); }
+h1, h2, h3, h4, p { margin-top: 0; }
+
+.container {
+  width: min(92%, var(--container));
+  margin-inline: auto;
+}
+
+/* 顶部导航 */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.brand-mark {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.primary-nav ul {
+  display: flex; align-items: center; gap: 28px;
+  list-style: none; margin: 0; padding: 0;
+}
+
+.primary-nav a { color: var(--text); font-weight: 500; font-size: .95rem; }
+.primary-nav a:hover { color: var(--primary); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: .95rem;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .2s, background .2s;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-light); color: #fff; }
+.btn-ghost { background: transparent; border-color: var(--primary); color: var(--primary); }
+.btn-ghost:hover { background: var(--primary); color: #fff; }
+.btn-sm { padding: 9px 18px; font-size: .9rem; }
+
+/* 移动菜单按钮 */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px; height: 26px;
+  background: none; border: none; cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block; width: 100%; height: 3px;
+  background: var(--primary); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+
+.mobile-menu {
+  display: none;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+}
+
+.mobile-menu ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+.mobile-menu a {
+  display: block; padding: 10px 0;
+  color: var(--text); font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Hero */
+.hero {
+  min-height: calc(100dvh - var(--header-h));
+  display: flex; align-items: center;
+  padding: 60px 0 70px;
+  background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
+}
+
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  gap: 50px; align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--primary-light);
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.1;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--text-light);
+  max-width: 560px;
+  margin-bottom: 28px;
+}
+
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+.hero-stats {
+  display: flex; gap: 40px;
+  list-style: none; margin: 0; padding: 0;
+}
+
+.hero-stats li { display: flex; flex-direction: column; gap: 4px; }
+.hero-stats strong {
+  font-size: 1.7rem; color: var(--primary); line-height: 1;
+}
+.hero-stats span { font-size: .85rem; color: var(--text-light); }
+
+.hero-visual svg {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* 信任条 */
+.trust {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 0;
+}
+
+.trust-row {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trust-label {
+  font-size: .85rem; opacity: .85; text-transform: uppercase; letter-spacing: .05em;
+}
+
+.trust ul {
+  display: flex; gap: 22px; flex-wrap: wrap;
+  list-style: none; margin: 0; padding: 0;
+  font-weight: 600; font-size: .95rem;
+}
+
+/* Section通用 */
+.section { padding: 86px 0; }
+.section-alt { background: var(--bg-alt); }
+
+.section-head {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+
+.section-head h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.section-head p { color: var(--text-light); font-size: 1.05rem; }
+
+/* 产品网格 */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.product-media {
+  aspect-ratio: 4 / 3;
+  background: #f1f6fb;
+  display: grid; place-items: center;
+  padding: 16px;
+}
+
+.product-media svg { max-height: 100%; }
+
+.product-card h3 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin: 18px 18px 8px;
+}
+
+.product-card p {
+  font-size: .92rem;
+  color: var(--text-light);
+  margin: 0 18px 12px;
+}
+
+.spec {
+  list-style: none; margin: 0 18px 16px; padding: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.spec li {
+  font-size: .85rem;
+  color: var(--text);
+  padding-left: 18px;
+  position: relative;
+}
+
+.spec li::before {
+  content: "✓";
+  position: absolute; left: 0;
+  color: #16a34a; font-weight: 700;
+}
+
+.link-arrow {
+  display: block;
+  margin: 0 18px 18px;
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+/* Why us */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.why-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.why-ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px;
+  background: #eef4fb;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+.why-card h3 { color: var(--primary); margin-bottom: 8px; font-size: 1.1rem; }
+.why-card p { color: var(--text-light); font-size: .95rem; margin: 0; }
+
+/* 认证 */
+.cert-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  list-style: none; margin: 0; padding: 0;
+}
+
+.cert-list li {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+}
+
+.cert-list strong {
+  display: block;
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.cert-list span {
+  font-size: .85rem;
+  color: var(--text-light);
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 50px; align-items: start;
+}
+
+.about-grid h2 { color: var(--primary); margin-bottom: 16px; }
+.about-grid p { color: var(--text-light); margin-bottom: 14px; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  list-style: none; margin: 0; padding: 0;
+}
+
+.about-stats li {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+
+.about-stats strong { display: block; font-size: 1.6rem; color: var(--primary); }
+.about-stats span { font-size: .85rem; color: var(--text-light); }
+
+/* 联系表单 */
+.contact { background: var(--primary); color: #fff; }
+.contact h2 { color: #fff; margin-bottom: 12px; }
+.contact > .container > div > p { color: rgba(255,255,255,.85); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 50px;
+}
+
+.contact-info {
+  list-style: none; margin: 24px 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.contact-info li { color: rgba(255,255,255,.9); }
+
+.quote-form {
+  background: #fff;
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 30px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-weight: 600; font-size: .9rem; color: var(--primary); }
+
+.field input,
+.field select,
+.field textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(10,61,98,.12);
+}
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+.quote-form button { align-self: flex-start; }
+.form-note { font-size: .8rem; color: var(--text-light); margin: 0; }
+.form-success { color: #16a34a; font-weight: 600; margin: 0; }
+
+/* Footer */
+.site-footer {
+  background: #0b1d2e;
+  color: rgba(255,255,255,.75);
+  padding: 60px 0 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 36px;
+  margin-bottom: 40px;
+}
+
+.footer-grid h4 { color: #fff; margin-bottom: 14px; font-size: 1rem; }
+.footer-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.footer-grid a { color: rgba(255,255,255,.75); }
+.footer-grid a:hover { color: #fff; }
+
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 20px; text-align: center; color: rgba(255,255,255,.55); }
+
+/* 滚动动画初始状态 */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* 响应式 */
+@media (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .cert-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .primary-nav { display: none; }
+  .nav-toggle { display: flex; }
+  .mobile-menu { display: block; }
+
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+
+@media (max-width: 560px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .cert-list { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .hero-stats { gap: 22px; }
+  .trust-row { justify-content: flex-start; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* 焦点可见性（无障碍） */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
