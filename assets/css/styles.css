@@ -217,6 +217,7 @@ a:hover { text-decoration: underline; }
   padding: 26px 22px; display: flex; flex-direction: column;
   transition: transform .15s, box-shadow .15s, border-color .15s;
   overflow: hidden;
+  position: relative;
 }
 .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
 .product-image {
@@ -245,8 +246,14 @@ a:hover { text-decoration: underline; }
 }
 .product-variants img:hover { transform: scale(1.04); border-color: var(--accent); }
 .product-tag {
-  align-self: flex-start; background: rgba(245,135,31,0.12); color: var(--accent-strong);
-  font-weight: 700; font-size: 0.75rem; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  background: var(--accent); color: #fff;
+  font-weight: 700; font-size: 0.72rem;
+  padding: 5px 12px; border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  letter-spacing: 0.3px;
+  max-width: calc(100% - 28px);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .product-card h3 { margin: 0 0 8px; color: var(--ink); font-size: 1.2rem; }
 .product-card p { margin: 0 0 14px; color: var(--muted); font-size: 0.92rem; }
