@@ -274,11 +274,10 @@
           </ul>
         </div>
 
-        <!-- 表单：默认提交到 Formspree 占位 endpoint。
-             上线前把 action 的 your_form_id 替换为您在 formspree.io 创建的真实 ID；
-             也可改成自建 Vercel Serverless Function 或其他表单服务。 -->
-        <form class="quote-form" id="quoteForm"
-              action="https://formspree.io/f/your_form_id" method="POST" novalidate>
+        <!-- 表单：因 Formspree 从国内注册屡次超时卡死，改为 mailto 方案。
+             访客点提交后打开本地邮件客户端，收件人预填 Leo@gfiretech.com，
+             主题和正文自动带入表单信息；不依赖任何第三方表单服务。 -->
+        <form class="quote-form" id="quoteForm" action="#" novalidate>
           <div class="field">
             <label for="name">Full Name *</label>
             <input type="text" id="name" name="name" autocomplete="name" required />

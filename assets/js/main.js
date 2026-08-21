@@ -2,7 +2,7 @@
    GfireTech 外贸独立站交互脚本
    - 移动端菜单开关（同步 aria-expanded）
    - 点击导航链接后自动收起移动菜单
-   - 询盘表单：前端校验 + 蜜罐防垃圾 + fetch 提交到 Formspree
+   - 询盘表单：前端校验 + 蜜罐防垃圾 + mailto 打开本地邮件客户端
    - 滚动 reveal 动画（IntersectionObserver）
    注意：所有逻辑仅作用于客户端，无任何服务端密钥。
    ========================================================= */
@@ -51,7 +51,9 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* ---------- 询盘表单 ---------- */
+  /* ---------- 询盘表单（mailto 方案） ----------
+     Formspree 从国内注册屡次超时卡死，改用本地邮件客户端提交。
+     验证通过后自动生成 mailto 链接并打开，正文预填所有表单字段。 */
   var form = document.getElementById("quoteForm");
   var status = document.getElementById("formStatus");
   if (form && status) {
@@ -79,29 +81,37 @@
         return;
       }
 
-      status.textContent = "Sending…";
-      status.className = "form-status";
+      // 收集字段
+      var company = form.querySelector("#company").value.trim();
+      var country = form.querySelector("#country").value.trim();
+      var product = form.querySelector("#product").value.trim();
+      var bodyLines = [
+        "Hi GfireTech,",
+        "",
+        "I am interested in your products. Please find my details below:",
+        "",
+        "Name: " + name.value.trim(),
+        "Email: " + email.value.trim()
+      ];
+      if (company) bodyLines.push("Company: " + company);
+      if (country) bodyLines.push("Country / Market: " + country);
+      if (product) bodyLines.push("Product Interest: " + product);
+      bodyLines.push("", "Message:", message.value.trim(), "", "Best regards,");
+      var body = bodyLines.join("\n");
 
-      // 用 FormData 直接提交到 formspree（已配置 CORS）。
-      // 上线前把 index.html 中 action 的 your_form_id 换成您的真实 ID。
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      })
-        .then(function (res) {
-          if (res.ok) {
-            status.textContent = "Thanks! We will reply within 24 hours.";
-            status.className = "form-status ok";
-            form.reset();
-          } else {
-            throw new Error("submit failed");
-          }
-        })
-        .catch(function () {
-          status.textContent = "Something went wrong. Please email us directly at Leo@gfiretech.com.";
-          status.className = "form-status err";
-        });
+      var subject = "Inquiry from GfireTech.com";
+      if (product) subject += " - " + product;
+
+      var mailto = "mailto:Leo@gfiretech.com"
+        + "?subject=" + encodeURIComponent(subject)
+        + "&body=" + encodeURIComponent(body);
+
+      // 打开邮件客户端；不刷新页面
+      window.open(mailto, "_blank");
+
+      status.textContent = "Your email client has opened. Please send the message, and we will reply within 24 hours.";
+      status.className = "form-status ok";
+      form.reset();
     });
   }
 

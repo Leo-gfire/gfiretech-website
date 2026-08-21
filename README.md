@@ -58,18 +58,14 @@ python -m http.server 8123
 3. Vercel 自动签发 **HTTPS 证书**（无需手动申请），生效后地址栏显示锁标。
 4. 验证：浏览器访问你的域名，确认 `https://` 且页面正常。
 
-## 6. 表单收件（关键！上线前必须改）
+## 6. 表单收件
 
-询盘表单目前指向 Formspree 占位 `your_form_id`，**不替换则收不到邮件**。二选一：
+当前已使用 **mailto 方案**：访客点击提交后，会打开本地邮件客户端（Outlook / Apple Mail / Gmail App 等），收件人自动填入 `Leo@gfiretech.com`，主题和正文预填好表单信息。此方案**不依赖任何第三方表单服务**，在国内网络环境下最稳定。
 
-**方案 1 — Formspree（最简单，推荐起步）**
-1. 注册 https://formspree.io，新建表单，复制你的表单 ID。
-2. 编辑 `index.html`，把 `action="https://formspree.io/f/your_form_id"` 中的 `your_form_id` 换成真实 ID。
-3. 重新推送 / 重新部署即可生效。
+**后续如需升级，可选方案：**
 
-**方案 2 — 自建 Vercel Serverless Function（不依赖第三方）**
-1. 在根目录建 `api/contact.js`，用 `nodemailer` 或邮件 API 发送，并从 `main.js` 把请求改为 `/api/contact`。
-2. 需要配置环境变量（邮件服务密钥），**密钥只放 Vercel 环境变量，切勿写进前端代码**。
+- **Formspree**：国内注册有时会被卡；如能正常注册，在 `index.html` 恢复 `<form action="https://formspree.io/f/你的表单ID">`，并把 `main.js` 中的 mailto 逻辑改回 `fetch` 提交。
+- **自建 Vercel Serverless Function**：在根目录建 `api/contact.js`，用 `nodemailer` 或邮件 API 发送。邮件服务密钥只放 Vercel 环境变量，切勿写进前端代码。
 
 ## 7. 上线前必改清单（占位符一览）
 
@@ -79,6 +75,7 @@ python -m http.server 8123
 | `canonical` / `og:url` | www.gfiretech.com | ✅ 已更新 |
 | 联系信息 | Leo@gfiretech.com / +86 195 6635 1393（WhatsApp 同号） | ✅ 已更新 |
 | 工厂地址 | Room 712, Commercial Building, Tangwei Community, Bao'an District, Shenzhen | ✅ 已更新 |
+| 询盘表单 | Formspree 占位 `your_form_id` | ✅ 已改为 mailto 方案，收件人 Leo@gfiretech.com |
 | 产品图 | 内联 SVG 占位 | 实拍图（建议 WebP 800×800） |
 | `og:image` | assets/img/og-cover.jpg | 上传封面图并修正路径 |
 | 多语言 | 仅英文 | 后续加 /de /fr /es 子目录 |
@@ -96,6 +93,6 @@ python -m http.server 8123
 ## 9. 常见失败原因
 
 - **部署后样式/脚本 404**：检查 `assets/` 路径大小写与 `vercel.json` 是否把目录改了；静态站 `outputDirectory` 必须是 `.`。
-- **表单没反应**：Formspree ID 未替换，或被浏览器拦截了跨域——确认 `action` 已改成真实 ID 且用 `https`。
+- **表单没反应**：mailto 方案依赖访客本地邮件客户端；如手机端未安装邮件 App，可改用 Formspree 或自建后端。
 - **自定义域名无法访问**：CNAME 未生效（DNS 全球生效需 5 分钟~24 小时），先在临时 `*.vercel.app` 域名验证页面本身没问题。
 - **HTTPS 不显示锁标**：证书签发中（通常几分钟），或混合内容（页面引用了 `http://` 资源）——本模板无外链，一般不会有此问题。
