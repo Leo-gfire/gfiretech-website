@@ -245,6 +245,7 @@ a:hover { text-decoration: underline; }
   cursor: pointer; transition: transform .12s, border-color .12s;
 }
 .product-variants img:hover { transform: scale(1.04); border-color: var(--accent); }
+.product-variants img.active { border-color: var(--accent); border-width: 2px; transform: scale(1.04); box-shadow: 0 0 0 2px rgba(245,135,31,0.18); }
 .product-tag {
   position: absolute; top: 14px; right: 14px; z-index: 2;
   background: var(--accent); color: #fff;

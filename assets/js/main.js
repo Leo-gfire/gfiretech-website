@@ -119,6 +119,22 @@
     });
   });
 
+  /* 产品变体小图点击切换主图 */
+  document.querySelectorAll(".product-variants img").forEach(function (thumb) {
+    thumb.addEventListener("click", function () {
+      var card = thumb.closest(".product-card");
+      if (!card) return;
+      var main = card.querySelector(".product-image");
+      if (!main) return;
+      var newSrc = thumb.getAttribute("src");
+      if (!newSrc || main.getAttribute("src") === newSrc) return;
+      main.src = newSrc;
+      main.alt = thumb.alt || main.alt;
+      card.querySelectorAll(".product-variants img").forEach(function (t) { t.classList.remove("active"); });
+      thumb.classList.add("active");
+    });
+  });
+
   /* ---------- 复制邮箱按钮 ---------- */
   function showCopyHint(msg) {
     var hint = document.getElementById("copyHint");
