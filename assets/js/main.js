@@ -130,4 +130,43 @@
       }
     });
   });
+
+  /* ---------- 复制邮箱按钮 ---------- */
+  function showCopyHint(msg) {
+    var hint = document.getElementById("copyHint");
+    if (hint) {
+      hint.textContent = msg;
+      setTimeout(function () { hint.textContent = ""; }, 2500);
+    }
+  }
+  function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    ta.style.top = "0";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    showCopyHint(ok ? "Copied!" : "Copy failed, select manually.");
+  }
+  function copyEmail(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(
+        function () { showCopyHint("Copied!"); },
+        function () { fallbackCopy(text); }
+      );
+    } else {
+      fallbackCopy(text);
+    }
+  }
+  document.querySelectorAll(".btn-copy, #copyEmailBtn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var email = btn.getAttribute("data-email");
+      if (email) copyEmail(email);
+    });
+  });
 })();

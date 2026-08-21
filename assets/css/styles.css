@@ -360,3 +360,35 @@ a:hover { text-decoration: underline; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---------- 复制邮箱按钮 ---------- */
+.copy-email-line {
+  margin: 12px 0 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  text-align: center;
+}
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--navy);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
+  text-decoration: underline;
+  border-radius: 4px;
+}
+.btn-link:hover { color: var(--orange); }
+.btn-link:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.btn-copy {
+  margin-left: 6px;
+  font-size: 0.8rem;
+}
+.copy-hint {
+  display: inline-block;
+  margin-left: 6px;
+  color: #1a7f37;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
