@@ -279,6 +279,22 @@ a:hover { text-decoration: underline; }
 }
 .case-head h3 { margin: 0; color: var(--ink); font-size: 1.3rem; }
 .case-body { display: grid; grid-template-columns: 1fr; gap: 18px; }
+.case-video video {
+  width: 100%; display: block; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--bg-dark);
+  box-shadow: var(--shadow); aspect-ratio: 16 / 9; object-fit: cover;
+}
+.case-video-thumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.case-thumb {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 12px 5px 5px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--border); background: #fff;
+  font-size: 0.78rem; font-weight: 700; color: var(--ink-2);
+  transition: border-color .12s, background .12s, color .12s;
+}
+.case-thumb img { width: 60px; height: 38px; object-fit: cover; border-radius: 5px; display: block; }
+.case-thumb:hover { border-color: var(--accent); }
+.case-thumb.active { border-color: var(--accent); background: rgba(245,135,31,0.08); color: var(--accent-strong); }
 .case-block h4 { margin: 0 0 6px; color: var(--accent-strong); font-size: 0.95rem; text-transform: uppercase; letter-spacing: .5px; }
 .case-block p { margin: 0; color: var(--ink-2); }
 .case-flow { display: flex; flex-wrap: wrap; gap: 8px; }

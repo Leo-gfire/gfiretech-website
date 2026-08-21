@@ -157,4 +157,23 @@
       if (email) copyEmail(email);
     });
   });
+
+  /* ---------- Case study 视频切换 ---------- */
+  var caseVideo = document.getElementById("caseVideo");
+  if (caseVideo) {
+    document.querySelectorAll(".case-thumb").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var src = btn.getAttribute("data-src");
+        if (!src) return;
+        caseVideo.poster = btn.getAttribute("data-poster") || caseVideo.poster;
+        var source = caseVideo.querySelector("source");
+        if (source) source.src = src;
+        caseVideo.load();
+        var p = caseVideo.play();
+        if (p && p.catch) p.catch(function () {});
+        document.querySelectorAll(".case-thumb").forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+      });
+    });
+  }
 })();
