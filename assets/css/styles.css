@@ -255,6 +255,19 @@ a:hover { text-decoration: underline; }
   width: 100%; height: auto; aspect-ratio: 3 / 4;
 }
 .product-card.portrait .product-variants.single { grid-template-columns: 80px; }
+
+/* 方形产品图片：主图 1/1、变体 5 列网格 */
+.product-card.square .product-image { aspect-ratio: 1; }
+.product-card.square .product-variants {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 8px; padding: 10px;
+}
+.product-card.square .product-variants-label {
+  grid-column: 1 / -1; margin-bottom: 4px;
+}
+.product-card.square .product-variants img {
+  width: 100%; height: auto; aspect-ratio: 1;
+}
 .product-tag {
   align-self: flex-start; background: rgba(245,135,31,0.12); color: var(--accent-strong);
   font-weight: 700; font-size: 0.75rem; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
