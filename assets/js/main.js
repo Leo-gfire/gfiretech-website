@@ -2,7 +2,7 @@
    GfireTech 外贸独立站交互脚本
    - 移动端菜单开关（同步 aria-expanded）
    - 点击导航链接后自动收起移动菜单
-   - 询盘表单：前端校验 + 蜜罐防垃圾 + mailto 打开本地邮件客户端
+   - 询盘表单：前端校验 + 蜜罐防垃圾 + fetch 异步提交到 Formspree（转发 Leo@gfiretech.com）
    - 滚动 reveal 动画（IntersectionObserver）
    注意：所有逻辑仅作用于客户端，无任何服务端密钥。
    ========================================================= */
@@ -51,9 +51,11 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* ---------- 询盘表单（mailto 方案） ----------
-     Formspree 从国内注册屡次超时卡死，改用本地邮件客户端提交。
-     验证通过后自动生成 mailto 链接并打开，正文预填所有表单字段。 */
+  /* ---------- 询盘表单（Formspree 异步提交） ----------
+     提交到真实 Formspree 表单 xyegodab，询盘以邮件形式转发到 Leo@gfiretech.com。
+     采用 fetch 异步提交（Formspree 已配置 CORS），不刷新页面；
+     失败时页内提示用户改用复制邮箱按钮直发。 */
+  var FORM_ENDPOINT = "https://formspree.io/f/xyegodab";
   var form = document.getElementById("quoteForm");
   var status = document.getElementById("formStatus");
   if (form && status) {
@@ -81,37 +83,27 @@
         return;
       }
 
-      // 收集字段
-      var company = form.querySelector("#company").value.trim();
-      var country = form.querySelector("#country").value.trim();
-      var product = form.querySelector("#product").value.trim();
-      var bodyLines = [
-        "Hi GfireTech,",
-        "",
-        "I am interested in your products. Please find my details below:",
-        "",
-        "Name: " + name.value.trim(),
-        "Email: " + email.value.trim()
-      ];
-      if (company) bodyLines.push("Company: " + company);
-      if (country) bodyLines.push("Country / Market: " + country);
-      if (product) bodyLines.push("Product Interest: " + product);
-      bodyLines.push("", "Message:", message.value.trim(), "", "Best regards,");
-      var body = bodyLines.join("\n");
+      status.textContent = "Sending…";
+      status.className = "form-status";
 
-      var subject = "Inquiry from GfireTech.com";
-      if (product) subject += " - " + product;
-
-      var mailto = "mailto:Leo@gfiretech.com"
-        + "?subject=" + encodeURIComponent(subject)
-        + "&body=" + encodeURIComponent(body);
-
-      // 打开邮件客户端；不刷新页面
-      window.open(mailto, "_blank");
-
-      status.textContent = "Your email client has opened. Please send the message, and we will reply within 24 hours.";
-      status.className = "form-status ok";
-      form.reset();
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      })
+        .then(function (res) {
+          if (res.ok) {
+            status.textContent = "Thanks! Your inquiry has been sent. We will reply within 24 hours.";
+            status.className = "form-status ok";
+            form.reset();
+          } else {
+            throw new Error("submit failed");
+          }
+        })
+        .catch(function () {
+          status.textContent = "Network error. Please use the Copy email button below to reach us at Leo@gfiretech.com.";
+          status.className = "form-status err";
+        });
     });
   }
 

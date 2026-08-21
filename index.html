@@ -274,10 +274,10 @@
           </ul>
         </div>
 
-        <!-- 表单：因 Formspree 从国内注册屡次超时卡死，改为 mailto 方案。
-             访客点提交后打开本地邮件客户端，收件人预填 Leo@gfiretech.com，
-             主题和正文自动带入表单信息；不依赖任何第三方表单服务。 -->
-        <form class="quote-form" id="quoteForm" action="#" novalidate>
+        <!-- 表单：提交到 Formspree 真实表单（ID xyegodab），询盘以邮件形式自动转发到 Leo@gfiretech.com。
+             访客点提交后通过 fetch 异步提交，无需打开邮件客户端；失败时页内提示改用复制邮箱按钮。 -->
+        <form class="quote-form" id="quoteForm"
+              action="https://formspree.io/f/xyegodab" method="POST" novalidate>
           <div class="field">
             <label for="name">Full Name *</label>
             <input type="text" id="name" name="name" autocomplete="name" required />
@@ -311,6 +311,8 @@
           </div>
           <!-- 防垃圾邮件蜜罐字段，机器人填了就不提交 -->
           <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <!-- 提交到 Formspree 后邮件标题 -->
+          <input type="hidden" name="_subject" value="New Inquiry from GfireTech.com" />
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
           <button type="submit" class="btn btn-primary btn-block">Send Inquiry</button>
           <p class="copy-email-line">
