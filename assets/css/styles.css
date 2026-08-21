@@ -223,51 +223,27 @@ a:hover { text-decoration: underline; }
   display: block;
   width: calc(100% + 44px);
   margin: -26px -22px 14px;
-  aspect-ratio: 4 / 3; object-fit: contain;
+  aspect-ratio: 1; object-fit: contain;
+  padding: 8px; box-sizing: border-box;
   background: #f5f6f8;
 }
 .product-variants {
-  display: flex; gap: 8px; align-items: center;
-  margin: 0 0 16px; padding: 8px 10px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(52px, 1fr));
+  gap: 8px; margin: 0 0 16px; padding: 10px;
   background: #f5f6f8; border-radius: 8px;
 }
 .product-variants-label {
+  grid-column: 1 / -1; margin-bottom: 4px;
   font-size: 0.72rem; color: var(--muted);
   font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase;
 }
 .product-variants img {
-  width: 56px; height: 42px;
+  width: 100%; aspect-ratio: 1;
   object-fit: cover; border-radius: 6px;
   border: 1px solid var(--border); background: #fff;
   cursor: pointer; transition: transform .12s, border-color .12s;
 }
 .product-variants img:hover { transform: scale(1.04); border-color: var(--accent); }
-/* 竖版产品（比例 < 1）专用：主图 2/3，变体 4 列网格 3/4 小图 */
-.product-card.portrait .product-image { aspect-ratio: 2 / 3; }
-.product-card.portrait .product-variants {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 8px; padding: 10px;
-}
-.product-card.portrait .product-variants-label {
-  grid-column: 1 / -1; margin-bottom: 4px;
-}
-.product-card.portrait .product-variants img {
-  width: 100%; height: auto; aspect-ratio: 3 / 4;
-}
-.product-card.portrait .product-variants.single { grid-template-columns: 80px; }
-
-/* 方形产品图片：主图 1/1、变体 5 列网格 */
-.product-card.square .product-image { aspect-ratio: 1; }
-.product-card.square .product-variants {
-  display: grid; grid-template-columns: repeat(5, 1fr);
-  gap: 8px; padding: 10px;
-}
-.product-card.square .product-variants-label {
-  grid-column: 1 / -1; margin-bottom: 4px;
-}
-.product-card.square .product-variants img {
-  width: 100%; height: auto; aspect-ratio: 1;
-}
 .product-tag {
   align-self: flex-start; background: rgba(245,135,31,0.12); color: var(--accent-strong);
   font-weight: 700; font-size: 0.75rem; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
