@@ -240,4 +240,48 @@
     }, { passive: true });
     updateArrows(0);
   }
+
+  /* ---------- Product carousel 切换 ---------- */
+  var productTrack = document.querySelector(".product-track");
+  var productTabs = document.querySelectorAll(".product-tab");
+  if (productTrack && productTabs.length) {
+    productTabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        var slide = productTrack.children[i];
+        if (slide && slide.scrollIntoView) {
+          slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+        }
+      });
+    });
+    var pPrevBtn = document.querySelector(".product-arrow-prev");
+    var pNextBtn = document.querySelector(".product-arrow-next");
+    var pCurrent = 0;
+    function pUpdateArrows(idx) {
+      if (pPrevBtn) pPrevBtn.disabled = (idx <= 0);
+      if (pNextBtn) pNextBtn.disabled = (idx >= productTabs.length - 1);
+    }
+    if (pPrevBtn) pPrevBtn.addEventListener("click", function () {
+      var i = Math.max(0, pCurrent - 1);
+      productTrack.children[i] && productTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    });
+    if (pNextBtn) pNextBtn.addEventListener("click", function () {
+      var i = Math.min(productTabs.length - 1, pCurrent + 1);
+      productTrack.children[i] && productTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    });
+    var pScrollTimer;
+    productTrack.addEventListener("scroll", function () {
+      clearTimeout(pScrollTimer);
+      pScrollTimer = setTimeout(function () {
+        var w = productTrack.clientWidth;
+        pCurrent = Math.round(productTrack.scrollLeft / Math.max(w, 1));
+        productTabs.forEach(function (t, i) {
+          var on = i === pCurrent;
+          t.classList.toggle("active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        pUpdateArrows(pCurrent);
+      }, 80);
+    }, { passive: true });
+    pUpdateArrows(0);
+  }
 })();

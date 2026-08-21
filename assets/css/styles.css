@@ -321,14 +321,15 @@ a:hover { text-decoration: underline; }
 }
 
 /* Case Studies carousel */
-.case-carousel { position: relative; padding: 0 56px; }
-.case-tabs {
+.case-carousel, .product-carousel { position: relative; padding: 0 56px; margin-bottom: 0; }
+.case-tabs, .product-tabs {
   display: flex; gap: 0; margin-bottom: 22px;
   border-bottom: 1px solid var(--border); overflow-x: auto;
   scrollbar-width: none;
 }
-.case-tabs::-webkit-scrollbar { display: none; }
-.case-tab {
+.case-tabs::-webkit-scrollbar,
+.product-tabs::-webkit-scrollbar { display: none; }
+.case-tab, .product-tab {
   flex: 1 1 0; min-width: 180px;
   padding: 16px 18px;
   background: transparent; border: 0;
@@ -337,16 +338,16 @@ a:hover { text-decoration: underline; }
   transition: border-color .15s, background .15s, color .15s;
   font: inherit; color: var(--muted);
 }
-.case-tab:hover { background: rgba(245,135,31,0.04); color: var(--ink); }
-.case-tab.active { border-bottom-color: var(--accent); color: var(--ink); }
-.case-tab-title {
+.case-tab:hover, .product-tab:hover { background: rgba(245,135,31,0.04); color: var(--ink); }
+.case-tab.active, .product-tab.active { border-bottom-color: var(--accent); color: var(--ink); }
+.case-tab-title, .product-tab-title {
   display: block; font-weight: 700; font-size: 1.05rem; line-height: 1.3;
 }
-.case-tab-meta {
+.case-tab-meta, .product-tab-meta {
   display: block; font-size: 0.78rem; color: var(--ink-2);
   margin-top: 4px; letter-spacing: 0.3px; font-weight: 500;
 }
-.case-track {
+.case-track, .product-track {
   display: flex; overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -354,14 +355,15 @@ a:hover { text-decoration: underline; }
   scrollbar-width: none;
   margin: 0 -22px; padding: 0 22px;
 }
-.case-track::-webkit-scrollbar { display: none; }
-.case-slide {
+.case-track::-webkit-scrollbar,
+.product-track::-webkit-scrollbar { display: none; }
+.case-slide, .product-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
   min-width: 0;
   padding: 4px 4px 8px;
 }
-.case-arrow {
+.case-arrow, .product-arrow {
   position: absolute; top: 50%;
   transform: translateY(-50%);
   width: 44px; height: 44px;
@@ -373,16 +375,17 @@ a:hover { text-decoration: underline; }
   display: grid; place-items: center;
   transition: transform .15s, box-shadow .15s, opacity .15s, color .15s;
 }
-.case-arrow:hover:not(:disabled) {
+.case-arrow:hover:not(:disabled),
+.product-arrow:hover:not(:disabled) {
   transform: translateY(-50%) scale(1.08);
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   color: var(--accent-strong);
 }
-.case-arrow svg { width: 20px; height: 20px; }
-.case-arrow-prev { left: 4px; }
-.case-arrow-next { right: 4px; }
-.case-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
-@media (max-width: 600px) { .case-arrow { display: none; } .case-carousel { padding: 0; } }
+.case-arrow svg, .product-arrow svg { width: 20px; height: 20px; }
+.case-arrow-prev, .product-arrow-prev { left: 4px; }
+.case-arrow-next, .product-arrow-next { right: 4px; }
+.case-arrow:disabled, .product-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+@media (max-width: 600px) { .case-arrow, .product-arrow { display: none; } .case-carousel, .product-carousel { padding: 0; } }
 .case-compliance-headline { color: var(--ink); font-weight: 700; font-size: 0.92rem; margin-right: 6px; }
 .case-compliance p {
   flex: 1 1 100%; margin: 8px 0 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5;

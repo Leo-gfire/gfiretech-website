@@ -184,81 +184,139 @@
         <h2 id="productsTitle" class="section-title">Selected Products &amp; Sourcing Capabilities</h2>
         <p class="section-sub">Representative products we can source and develop — proof of real supply-chain and product capability, not a fixed catalog.</p>
 
-        <div class="product-grid">
-          <article class="product-card">
-            <img class="product-image" src="assets/img/product-fireplace-1.png" alt="Classic black freestanding electric fireplace with glass door and infrared heater" loading="lazy">
-            <div class="product-variants" aria-label="Available sizes">
-              <span class="product-variants-label">Sizes</span>
-              <img src="assets/img/product-fireplace-2.png" alt="Mini dual-color electric fireplace in white and black, 13x7x19 inch" loading="lazy">
-              <img src="assets/img/product-fireplace-3.jpg" alt="60-inch smart electric fireplace with WiFi app and voice control, embedded installation" loading="lazy">
-            </div>
-            <div class="product-tag">Home Heating &amp; Interior</div>
-            <h3>Electric Fireplaces</h3>
-            <p>Home heating &amp; decor. Multiple sizes, flame effects, remote control and OEM branding.</p>
-            <ul class="ticks">
-              <li>Product selection &amp; supplier verification</li>
-              <li>Appearance &amp; packaging customization</li>
-              <li>OEM / ODM mass production</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline" data-product="Electric Fireplaces">Explore Product</a>
-          </article>
+        <div class="product-carousel">
+          <button type="button" class="product-arrow product-arrow-prev" aria-label="Previous product" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="product-arrow product-arrow-next" aria-label="Next product">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="product-tabs" role="tablist" aria-label="Product categories">
+            <button type="button" class="product-tab active" data-target="0" role="tab" aria-selected="true">
+              <span class="product-tab-title">Heating</span>
+              <span class="product-tab-meta">Electric Fireplaces</span>
+            </button>
+            <button type="button" class="product-tab" data-target="1" role="tab" aria-selected="false">
+              <span class="product-tab-title">Cooling</span>
+              <span class="product-tab-meta">Portable Air Conditioners</span>
+            </button>
+            <button type="button" class="product-tab" data-target="2" role="tab" aria-selected="false">
+              <span class="product-tab-title">Automotive</span>
+              <span class="product-tab-meta">Tire Inflators &amp; Jump Starters</span>
+            </button>
+            <button type="button" class="product-tab" data-target="3" role="tab" aria-selected="false">
+              <span class="product-tab-title">Family Care</span>
+              <span class="product-tab-meta">Children's Bed Wetting Alarms</span>
+            </button>
+            <button type="button" class="product-tab" data-target="4" role="tab" aria-selected="false">
+              <span class="product-tab-title">Lighting</span>
+              <span class="product-tab-meta">Solar Motion Lights</span>
+            </button>
+          </div>
 
-          <article class="product-card">
-            <img class="product-image" src="assets/img/product-ac-5.jpg" alt="4-hose portable air conditioner with dual exhaust ducts, premium configuration" loading="lazy">
-            <div class="product-variants" aria-label="Available configurations">
-              <span class="product-variants-label">Configurations</span>
-              <img src="assets/img/product-ac-1.png" alt="Vertical tower portable air conditioner with LED display" loading="lazy">
-              <img src="assets/img/product-ac-2.jpg" alt="Dual-hose portable air conditioner, white body" loading="lazy">
-              <img src="assets/img/product-ac-3.jpg" alt="Single-hose portable air conditioner, side view" loading="lazy">
-              <img src="assets/img/product-ac-4.jpg" alt="Single-hose portable air conditioner, front view" loading="lazy">
+          <div class="product-track" tabindex="0" aria-label="Products carousel">
+            <div class="product-slide" role="tabpanel">
+              <article class="product-card">
+                <img class="product-image" src="assets/img/product-fireplace-1.png" alt="Classic black freestanding electric fireplace with glass door and infrared heater" loading="lazy">
+                <div class="product-variants" aria-label="Available sizes">
+                  <span class="product-variants-label">Sizes</span>
+                  <img src="assets/img/product-fireplace-2.png" alt="Mini dual-color electric fireplace in white and black, 13x7x19 inch" loading="lazy">
+                  <img src="assets/img/product-fireplace-3.jpg" alt="60-inch smart electric fireplace with WiFi app and voice control, embedded installation" loading="lazy">
+                </div>
+                <div class="product-tag">Home Heating &amp; Interior</div>
+                <h3>Electric Fireplaces</h3>
+                <p>Home heating &amp; decor. Multiple sizes, flame effects, remote control and OEM branding.</p>
+                <ul class="ticks">
+                  <li>Product selection &amp; supplier verification</li>
+                  <li>Appearance &amp; packaging customization</li>
+                  <li>OEM / ODM mass production</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" data-product="Electric Fireplaces">Explore Product</a>
+              </article>
             </div>
-            <div class="product-tag">Portable Climate</div>
-            <h3>Portable Air Conditioners</h3>
-            <p>Dual-hose &amp; mini mobile AC for rooms, RVs and seasonal retail. CE / RoHS ready.</p>
-            <ul class="ticks">
-              <li>Voltage &amp; spec configuration</li>
-              <li>Supplier verification &amp; sample</li>
-              <li>OEM / ODM mass production</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline" data-product="Portable Air Conditioners">Explore Product</a>
-          </article>
 
-          <article class="product-card">
-            <img class="product-image" src="assets/img/product-inflator-2.png" alt="Multi-function automotive jump starter with tire inflator, clamps and nozzles" loading="lazy">
-            <div class="product-variants" aria-label="Other configuration">
-              <span class="product-variants-label">Other</span>
-              <img src="assets/img/product-inflator-1.png" alt="Portable mini tire inflator with LED display and carrying strap" loading="lazy">
+            <div class="product-slide" role="tabpanel">
+              <article class="product-card">
+                <img class="product-image" src="assets/img/product-ac-5.jpg" alt="4-hose portable air conditioner with dual exhaust ducts, premium configuration" loading="lazy">
+                <div class="product-variants" aria-label="Available configurations">
+                  <span class="product-variants-label">Configurations</span>
+                  <img src="assets/img/product-ac-1.png" alt="Vertical tower portable air conditioner with LED display" loading="lazy">
+                  <img src="assets/img/product-ac-2.jpg" alt="Dual-hose portable air conditioner, white body" loading="lazy">
+                  <img src="assets/img/product-ac-3.jpg" alt="Single-hose portable air conditioner, side view" loading="lazy">
+                  <img src="assets/img/product-ac-4.jpg" alt="Single-hose portable air conditioner, front view" loading="lazy">
+                </div>
+                <div class="product-tag">Portable Climate</div>
+                <h3>Portable Air Conditioners</h3>
+                <p>Dual-hose &amp; mini mobile AC for rooms, RVs and seasonal retail. CE / RoHS ready.</p>
+                <ul class="ticks">
+                  <li>Voltage &amp; spec configuration</li>
+                  <li>Supplier verification &amp; sample</li>
+                  <li>OEM / ODM mass production</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" data-product="Portable Air Conditioners">Explore Product</a>
+              </article>
             </div>
-            <div class="product-tag">Automotive Emergency</div>
-            <h3>Automotive Tire Inflators &amp; Jump Starters</h3>
-            <p>Multi-function emergency tools: tire inflation, jump start, lighting and portable power.</p>
-            <ul class="ticks">
-              <li>Multi-function product development</li>
-              <li>Supplier verification &amp; sample</li>
-              <li>OEM / ODM mass production</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline" data-product="Automotive Tire Inflators & Jump Starters">Explore Product</a>
-          </article>
 
-          <article class="product-card">
-            <img class="product-image" src="assets/img/product-alarm-1.jpg" alt="Children's bed wetting alarm with smart wristband receiver and clip-on sensor" loading="lazy">
-            <div class="product-variants" aria-label="Available configurations and angles">
-              <span class="product-variants-label">Configurations</span>
-              <img src="assets/img/product-alarm-2.jpg" alt="White wristband receiver with sensor, enhanced design" loading="lazy">
-              <img src="assets/img/product-alarm-3.jpg" alt="Wristband and clip-on sensor, original design" loading="lazy">
-              <img src="assets/img/product-alarm-4.jpg" alt="Wristband receiver front view with LED icons" loading="lazy">
-              <img src="assets/img/product-alarm-5.jpg" alt="Wristband receiver with rainbow accent ring" loading="lazy">
+            <div class="product-slide" role="tabpanel">
+              <article class="product-card">
+                <img class="product-image" src="assets/img/product-inflator-2.png" alt="Multi-function automotive jump starter with tire inflator, clamps and nozzles" loading="lazy">
+                <div class="product-variants" aria-label="Other configuration">
+                  <span class="product-variants-label">Other</span>
+                  <img src="assets/img/product-inflator-1.png" alt="Portable mini tire inflator with LED display and carrying strap" loading="lazy">
+                </div>
+                <div class="product-tag">Automotive Emergency</div>
+                <h3>Automotive Tire Inflators &amp; Jump Starters</h3>
+                <p>Multi-function emergency tools: tire inflation, jump start, lighting and portable power.</p>
+                <ul class="ticks">
+                  <li>Multi-function product development</li>
+                  <li>Supplier verification &amp; sample</li>
+                  <li>OEM / ODM mass production</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" data-product="Automotive Tire Inflators & Jump Starters">Explore Product</a>
+              </article>
             </div>
-            <div class="product-tag">Smart Family &amp; Care</div>
-            <h3>Children's Bed Wetting Alarms</h3>
-            <p>Smart care device with sensor, alert and comfortable wearable. Consumer-electronics capability.</p>
-            <ul class="ticks">
-              <li>Product development &amp; BOM</li>
-              <li>Supplier verification &amp; sample</li>
-              <li>OEM / ODM mass production</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline" data-product="Children's Bed Wetting Alarm">Explore Product</a>
-          </article>
+
+            <div class="product-slide" role="tabpanel">
+              <article class="product-card">
+                <img class="product-image" src="assets/img/product-alarm-1.jpg" alt="Children's bed wetting alarm with smart wristband receiver and clip-on sensor" loading="lazy">
+                <div class="product-variants" aria-label="Available configurations and angles">
+                  <span class="product-variants-label">Configurations</span>
+                  <img src="assets/img/product-alarm-2.jpg" alt="White wristband receiver with sensor, enhanced design" loading="lazy">
+                  <img src="assets/img/product-alarm-3.jpg" alt="Wristband and clip-on sensor, original design" loading="lazy">
+                  <img src="assets/img/product-alarm-4.jpg" alt="Wristband receiver front view with LED icons" loading="lazy">
+                  <img src="assets/img/product-alarm-5.jpg" alt="Wristband receiver with rainbow accent ring" loading="lazy">
+                </div>
+                <div class="product-tag">Smart Family &amp; Care</div>
+                <h3>Children's Bed Wetting Alarms</h3>
+                <p>Smart care device with sensor, alert and comfortable wearable. Consumer-electronics capability.</p>
+                <ul class="ticks">
+                  <li>Product development &amp; BOM</li>
+                  <li>Supplier verification &amp; sample</li>
+                  <li>OEM / ODM mass production</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" data-product="Children's Bed Wetting Alarm">Explore Product</a>
+              </article>
+            </div>
+
+            <div class="product-slide" role="tabpanel">
+              <article class="product-card">
+                <img class="product-image" src="assets/img/product-lamp-1.jpg" alt="Solar-powered outdoor motion sensor light with adjustable triple heads and integrated solar panel" loading="lazy">
+                <div class="product-variants" aria-label="Available configurations">
+                  <span class="product-variants-label">Configurations</span>
+                  <img src="assets/img/product-lamp-2.png" alt="Integrated solar wall light with LCD status display" loading="lazy">
+                </div>
+                <div class="product-tag">Lighting &amp; Outdoor</div>
+                <h3>Solar Motion Lights</h3>
+                <p>Solar-powered outdoor lighting with PIR motion sensor, integrated panels and weatherproof housing. Residential and commercial configurations.</p>
+                <ul class="ticks">
+                  <li>Product selection &amp; supplier verification</li>
+                  <li>Custom wattage &amp; LED configuration</li>
+                  <li>OEM / ODM mass production</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" data-product="Solar Motion Lights">Explore Product</a>
+              </article>
+            </div>
+          </div>
         </div>
 
         <p class="more-cats">More categories we can source &amp; develop: Heaters · Heated Blankets · Fans · Lighting · Pet Electronics · Consumer Electronics.</p>
