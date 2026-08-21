@@ -69,9 +69,10 @@
       // 前端校验：必填项
       var name = form.querySelector("#name");
       var email = form.querySelector("#email");
+      var product = form.querySelector("#product");
       var message = form.querySelector("#message");
-      if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
-        status.textContent = "Please fill in Name, Email and Message.";
+      if (!name.value.trim() || !email.value.trim() || !product.value.trim() || !message.value.trim()) {
+        status.textContent = "Please fill in Name, Email, Product and Message.";
         status.className = "form-status err";
         return;
       }
@@ -107,18 +108,13 @@
     });
   }
 
-  /* 产品卡片的 Request Quote 按钮：把产品名带入表单的 Product Interest */
+  /* 产品卡片的 Request a Quote 按钮：把产品名带入表单的 Product 输入框 */
   document.querySelectorAll("[data-product]").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      var select = document.getElementById("product");
-      if (select) {
-        Array.prototype.some.call(select.options, function (opt) {
-          if (opt.value === btn.getAttribute("data-product")) {
-            select.value = opt.value;
-            return true;
-          }
-          return false;
-        });
+      var input = document.getElementById("product");
+      if (input) {
+        input.value = btn.getAttribute("data-product");
+        input.focus();
       }
     });
   });
