@@ -273,6 +273,18 @@ a:hover { text-decoration: underline; }
 .contact-info li { margin-bottom: 12px; color: var(--muted); }
 .contact-info span { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--navy); font-weight: 700; }
 .contact-info a { color: var(--ink); font-weight: 600; }
+.contact-social { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 4px; }
+.social-btn { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .95rem; border-radius: 8px; color: #fff; font-weight: 600; font-size: .9rem; text-decoration: none; transition: transform .15s ease, opacity .15s ease; }
+.social-btn svg { width: 18px; height: 18px; flex: none; }
+.social-btn:hover { opacity: .92; transform: translateY(-1px); }
+.social-btn.whatsapp { background: #25D366; }
+.social-btn.linkedin { background: #0A66C2; }
+.footer-social { display: flex; gap: .75rem; margin-top: 14px; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; color: #fff; transition: transform .15s ease, opacity .15s ease; }
+.footer-social a svg { width: 20px; height: 20px; }
+.footer-social a:hover { transform: translateY(-2px); opacity: .92; }
+.footer-social a.whatsapp { background: #25D366; }
+.footer-social a.linkedin { background: #0A66C2; }
 
 .quote-form {
   background: #fff;
