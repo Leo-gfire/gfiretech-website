@@ -176,4 +176,31 @@
       });
     });
   }
+
+  /* ---------- Case study carousel 切换 ---------- */
+  var caseTrack = document.querySelector(".case-track");
+  var caseTabs = document.querySelectorAll(".case-tab");
+  if (caseTrack && caseTabs.length) {
+    caseTabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        var slide = caseTrack.children[i];
+        if (slide && slide.scrollIntoView) {
+          slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+        }
+      });
+    });
+    var scrollTimer;
+    caseTrack.addEventListener("scroll", function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        var w = caseTrack.clientWidth;
+        var idx = Math.round(caseTrack.scrollLeft / Math.max(w, 1));
+        caseTabs.forEach(function (t, i) {
+          var on = i === idx;
+          t.classList.toggle("active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+      }, 80);
+    }, { passive: true });
+  }
 })();
