@@ -257,6 +257,16 @@ a:hover { text-decoration: underline; }
 }
 .product-variants img:hover { transform: scale(1.04); border-color: var(--accent); }
 .product-variants img.active { border-color: var(--accent); border-width: 2px; transform: scale(1.04); box-shadow: 0 0 0 2px rgba(245,135,31,0.18); }
+.product-video {
+  margin: 0 0 16px;
+}
+.product-video video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  display: block;
+  background: #f5f6f8;
+}
 .product-tag {
   position: absolute; top: 14px; right: 14px; z-index: 2;
   background: var(--accent); color: #fff;
