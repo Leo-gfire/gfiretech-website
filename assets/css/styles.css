@@ -135,8 +135,8 @@ a:hover { text-decoration: underline; }
   display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; min-height: 440px;
 }
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1;
-  color: var(--ink); margin: 0 0 18px; font-weight: 800; letter-spacing: -0.5px;
+  font-size: clamp(2rem, 4.2vw, 3rem); line-height: 1.12;
+  color: var(--ink); margin: 0 0 18px; font-weight: 700; letter-spacing: -0.4px;
 }
 .hero-tags {
   color: var(--muted); font-weight: 600; margin: 0 0 18px; font-size: 0.95rem;
@@ -150,20 +150,25 @@ a:hover { text-decoration: underline; }
 
 /* ---------- SECTION 02 痛点区 ---------- */
 .problem-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 30px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 26px 0 30px;
 }
 .problem-item {
-  background: rgba(255,255,255,0.04);
+  position: relative;
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius); padding: 26px 22px;
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius); padding: 30px 26px; min-height: 196px;
+  transition: transform .2s ease, background .2s ease;
 }
-.problem-no { color: var(--accent); font-weight: 800; font-size: 1.1rem; }
-.problem-item h3 { color: #fff; margin: 8px 0 8px; font-size: 1.15rem; }
-.problem-item p { color: var(--on-dark-muted); margin: 0; font-size: 0.95rem; }
+.problem-item:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
+.problem-no { display: block; color: var(--accent); font-weight: 800; font-size: 1.8rem; line-height: 1; margin-bottom: 14px; }
+.problem-item h3 { color: #fff; margin: 0 0 12px; font-size: 1.2rem; font-weight: 700; }
+.problem-item p { color: var(--on-dark-muted); margin: 0; font-size: 0.98rem; line-height: 1.6; }
 .problem-closing {
   text-align: center; max-width: 760px; margin: 0 auto;
-  color: var(--on-dark); font-size: 1.1rem; font-weight: 500;
+  color: var(--on-dark); font-size: 1.15rem; font-weight: 600; line-height: 1.6;
 }
+.section-sub.light { color: var(--on-dark-muted); margin: 14px 0 0; }
 
 /* ---------- SECTION 03 核心能力 ---------- */
 .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
