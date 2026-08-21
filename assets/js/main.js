@@ -189,18 +189,39 @@
         }
       });
     });
+
+    /* 左右箭头按钮 */
+    var prevBtn = document.querySelector(".case-arrow-prev");
+    var nextBtn = document.querySelector(".case-arrow-next");
+    function updateArrows(idx) {
+      if (prevBtn) prevBtn.disabled = (idx <= 0);
+      if (nextBtn) nextBtn.disabled = (idx >= caseTabs.length - 1);
+    }
+    if (prevBtn) prevBtn.addEventListener("click", function () {
+      var i = Math.max(0, (currentIdx || 0) - 1);
+      caseTrack.children[i] && caseTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    });
+    if (nextBtn) nextBtn.addEventListener("click", function () {
+      var i = Math.min(caseTabs.length - 1, (currentIdx || 0) + 1);
+      caseTrack.children[i] && caseTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    });
+
+    /* 滚动同步 tab + arrow 状态 */
     var scrollTimer;
+    var currentIdx = 0;
     caseTrack.addEventListener("scroll", function () {
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(function () {
         var w = caseTrack.clientWidth;
-        var idx = Math.round(caseTrack.scrollLeft / Math.max(w, 1));
+        currentIdx = Math.round(caseTrack.scrollLeft / Math.max(w, 1));
         caseTabs.forEach(function (t, i) {
-          var on = i === idx;
+          var on = i === currentIdx;
           t.classList.toggle("active", on);
           t.setAttribute("aria-selected", on ? "true" : "false");
         });
+        updateArrows(currentIdx);
       }, 80);
     }, { passive: true });
+    updateArrows(0);
   }
 })();
