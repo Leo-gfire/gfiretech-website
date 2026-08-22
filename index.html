@@ -26,6 +26,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- SEO 结构化数据（JSON-LD）：帮助搜索引擎理解站点身份与站内搜索入口 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GFIRE TECH",
+    "url": "https://www.gfiretech.com/",
+    "logo": "https://www.gfiretech.com/assets/img/og-cover.jpg",
+    "description": "China product sourcing, supplier verification, OEM/ODM and procurement support, led by Leo Huang in Shenzhen.",
+    "founder": { "@type": "Person", "name": "Leo Huang" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Shenzhen", "addressCountry": "CN" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "GFIRE TECH",
+    "url": "https://www.gfiretech.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.gfiretech.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body>
   <!-- ============ 顶部导航 ============ -->
@@ -48,7 +75,7 @@
         <a href="#leo">Meet Leo</a>
         <a href="#cases">Case Studies</a>
         <a href="#about">About</a>
-        <a href="#contact" class="nav-cta">Start a Project</a>
+        <a href="#contact" class="nav-cta">Start a Sourcing Project</a>
       </nav>
     </div>
   </header>
@@ -58,16 +85,16 @@
     <section class="hero" aria-labelledby="heroTitle">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">China Product Sourcing &amp; Product Development</p>
-          <h1 id="heroTitle">Your China Partner<br />for Product Sourcing<br />&amp; Development</h1>
+          <p class="eyebrow">China Sourcing &amp; Product Development Partner</p>
+          <h1 id="heroTitle">Your China Partner<br />for Sourcing, Product<br />Development &amp; Procurement</h1>
           <p class="hero-tags">China Sourcing&nbsp;·&nbsp;Supplier Verification&nbsp;·&nbsp;OEM / ODM&nbsp;·&nbsp;Procurement Support</p>
           <p class="lead">
-            From product sourcing and supplier verification to OEM/ODM and procurement support,
-            we help overseas businesses build reliable supply chains in China.
+            We help overseas brands, importers and businesses find, verify and develop the right
+            products and suppliers in China — from initial sourcing to production.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Start a Project</a>
-            <a href="#products" class="btn btn-ghost">Explore Products</a>
+            <a href="#contact" class="btn btn-primary">Start a Sourcing Project</a>
+            <a href="#contact?service=verify-supplier" class="btn btn-ghost">Verify a Supplier</a>
           </div>
           <ul class="hero-stats">
             <li><strong>Shenzhen, China</strong><span>At the heart of China's manufacturing ecosystem</span></li>
@@ -152,15 +179,16 @@
         <div class="leo-copy">
           <p class="eyebrow">Meet Your China Product Partner</p>
           <h2 id="leoTitle" class="section-title">Leo Huang</h2>
-          <p class="leo-role">Product Development &amp; Sourcing | China</p>
+          <p class="leo-role">Product Development &amp; China Sourcing</p>
           <p class="lead">
-            Based in China, Leo Huang brings extensive experience in product development, sourcing and cross-border e-commerce
-            to help overseas businesses identify products, evaluate suppliers and develop reliable manufacturing solutions.
+            With 20+ years of experience in product development, sourcing and manufacturing coordination in China, Leo helps
+            overseas businesses turn product requirements into practical sourcing and production solutions.
           </p>
           <p class="lead">
-            His work covers product development, BOM evaluation, supplier communication, OEM / ODM and China sourcing across
-            consumer electronics, electrical appliances, automotive accessories and smart-family products.
+            His experience covers product specification, BOM analysis, supplier evaluation, cost optimization, sample
+            development, OEM/ODM and production coordination.
           </p>
+          <p class="leo-tagline">Product knowledge. Supplier access. On-the-ground execution in China.</p>
           <a class="btn btn-outline" href="https://www.linkedin.com/in/leo-huang-72b728153" target="_blank" rel="noopener">Connect with Leo on LinkedIn →</a>
         </div>
       </div>
@@ -169,8 +197,8 @@
     <!-- ============ SECTION 05 — Products ============ -->
     <section class="section" id="products" aria-labelledby="productsTitle">
       <div class="container">
-        <h2 id="productsTitle" class="section-title">Selected Products &amp; Sourcing Capabilities</h2>
-        <p class="section-sub">Representative products we can source and develop — proof of real supply-chain and product capability, not a fixed catalog.</p>
+        <h2 id="productsTitle" class="section-title">Products We Can Source &amp; Develop</h2>
+        <p class="section-sub">Selected examples of product categories we can source, develop and procure through our China supplier network.</p>
 
         <div class="product-carousel">
           <button type="button" class="product-arrow product-arrow-prev" aria-label="Previous product" disabled>
@@ -316,6 +344,13 @@
         </div>
 
         <p class="more-cats">More categories we can source &amp; develop: Heaters · Heated Blankets · Fans · Lighting · Pet Electronics · Consumer Electronics.</p>
+
+        <!-- 产品区收尾 CTA（网站优化意见822：Products 下方增加） -->
+        <div class="product-cta">
+          <h3 class="product-cta-title">Don't see your product?</h3>
+          <p class="product-cta-text">Tell us what you are looking for. We can help you identify suitable suppliers in China.</p>
+          <a href="#contact" class="btn btn-primary">Tell Us Your Requirement</a>
+        </div>
       </div>
     </section>
 
@@ -479,28 +514,54 @@
     <section class="section section-alt" id="verify" aria-labelledby="verifyTitle">
       <div class="container">
         <h2 id="verifyTitle" class="section-title">Supplier Verification</h2>
-        <p class="section-sub">Know Who You Are Buying From.</p>
+        <p class="section-sub">Know who you are buying from before you place an order.</p>
         <div class="detail-grid">
           <div class="detail-card">
-            <h3>Supplier Screening</h3>
-            <p>Supplier background and business verification before any order is placed.</p>
+            <h3>Company Verification</h3>
+            <p>Company identity, registration and basic business information.</p>
           </div>
           <div class="detail-card">
             <h3>Manufacturing Capability</h3>
-            <p>Production capability, equipment and relevant product experience.</p>
+            <p>Production facilities, equipment, workforce and relevant manufacturing experience.</p>
           </div>
           <div class="detail-card">
-            <h3>Product Verification</h3>
-            <p>Specification, materials, functions and quality evaluation against your requirement.</p>
+            <h3>Product Capability</h3>
+            <p>Whether the supplier actually has experience producing your product.</p>
           </div>
           <div class="detail-card">
             <h3>Certification Review</h3>
-            <p>Relevant certifications and compliance documentation (CE / RoHS / FCC etc.).</p>
+            <p>Review of relevant product certifications and compliance documentation.</p>
           </div>
           <div class="detail-card">
             <h3>Commercial Evaluation</h3>
-            <p>MOQ, pricing, lead time and production conditions — checked, not assumed.</p>
+            <p>MOQ, pricing, lead time, payment terms and other purchasing conditions.</p>
           </div>
+        </div>
+        <p class="verify-note">We don't simply forward supplier information. We help you understand the supplier behind the quotation.</p>
+
+        <!-- GFIRE Supplier Verification Report 预览（网站优化意见822：报告模板雏形） -->
+        <div class="verify-report">
+          <h3 class="verify-report-title">GFIRE Supplier Verification Report</h3>
+          <p class="verify-report-sub">Every supplier we assess is checked against a consistent framework. A sample of what the report covers:</p>
+          <ul class="verify-report-list">
+            <li><span>Company</span>Company authenticity</li>
+            <li><span>Factory</span>Factory authenticity</li>
+            <li><span>Manufacturing</span>Production capability</li>
+            <li><span>Product</span>Product capability</li>
+            <li><span>Certification</span>CE / RoHS / FCC, etc.</li>
+            <li><span>MOQ</span>Minimum order quantity</li>
+            <li><span>Price</span>Quotation reasonableness</li>
+            <li><span>Lead Time</span>Delivery time</li>
+            <li><span>QC</span>Quality control</li>
+            <li><span>Risk</span>Potential risks</li>
+          </ul>
+        </div>
+
+        <!-- 获客入口（网站优化意见822：Supplier Verification CTA） -->
+        <div class="verify-cta">
+          <h3 class="verify-cta-title">Already Found a Supplier in China?</h3>
+          <p class="verify-cta-text">Before placing an order, let us help you assess the supplier's capability, product experience and commercial conditions.</p>
+          <a href="#contact?service=verify-supplier" class="btn btn-primary">Request Supplier Verification</a>
         </div>
       </div>
     </section>
@@ -577,48 +638,88 @@
       </div>
     </section>
 
+    <!-- ============ SECTION 11b — Case Studies [示例内容，待替换真实案例] ============ -->
+    <section class="section section-alt" id="cases" aria-labelledby="casesTitle">
+      <div class="container">
+        <p class="eyebrow">Selected Work</p>
+        <h2 id="casesTitle" class="section-title">How We Help Clients Source in China</h2>
+        <p class="section-sub">A few representative engagements. Names withheld; details shared under NDA on request.</p>
+
+        <div class="case-grid">
+          <article class="case-card">
+            <div class="case-tag">Supplier Verification</div>
+            <h3>Verified a supplier before a six-figure order</h3>
+            <p class="case-challenge"><strong>Challenge:</strong> A US importer had a supplier quote far below market. They needed to know if it was real before paying a deposit. [示例]</p>
+            <p class="case-action"><strong>What we did:</strong> On-site verification of the factory, equipment and past shipments; compared the quote against real BOM cost. [示例]</p>
+            <p class="case-result"><strong>Result:</strong> Found the quote omitted key components — client renegotiated and avoided a costly bad order. [示例]</p>
+          </article>
+          <article class="case-card">
+            <div class="case-tag">Product Development</div>
+            <h3>Turned a concept into a producible spec</h3>
+            <p class="case-challenge"><strong>Challenge:</strong> A EU brand had a product idea but no workable specification or supplier. [示例]</p>
+            <p class="case-action"><strong>What we did:</strong> Built the BOM, sourced components, ran sample development and cost optimization with China factories. [示例]</p>
+            <p class="case-result"><strong>Result:</strong> Moved from idea to first production batch with a verified supply chain. [示例]</p>
+          </article>
+          <article class="case-card">
+            <div class="case-tag">OEM / ODM</div>
+            <h3>Managed procurement from sample to shipment</h3>
+            <p class="case-challenge"><strong>Challenge:</strong> A distributor needed ongoing supply but no local presence to follow up production. [示例]</p>
+            <p class="case-action"><strong>What we did:</strong> Selected the supplier, coordinated OEM production, inspected quality and tracked delivery from China. [示例]</p>
+            <p class="case-result"><strong>Result:</strong> Stable supply with on-the-ground follow-up, without the client flying in. [示例]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ SECTION 12 — Why Work With Us ============ -->
     <section class="section section-alt" id="why" aria-labelledby="whyTitle">
       <div class="container">
-        <h2 id="whyTitle" class="section-title">Why Work With Us</h2>
-        <p class="section-sub">You buy a capability system, not a single supplier's contact.</p>
+        <h2 id="whyTitle" class="section-title">Why Work With GFIRE TECH?</h2>
+        <p class="section-sub">You don't need another supplier list. You need the right supplier, the right product and someone on the ground in China to help manage the process.</p>
 
         <div class="feature-grid">
           <div class="feature">
             <div class="feature-num">01</div>
-            <h3>Product-Focused</h3>
-            <p>We understand products, specifications and manufacturing requirements.</p>
+            <h3>Product Development Experience</h3>
+            <p>We understand products, not just quotations. From specifications and BOMs to functions, samples and cost optimization, we approach sourcing from a product development perspective.</p>
           </div>
           <div class="feature">
             <div class="feature-num">02</div>
-            <h3>China-Based</h3>
-            <p>Direct access to China's manufacturing ecosystem.</p>
+            <h3>Supplier Verification</h3>
+            <p>We verify before you buy. We assess supplier capability, manufacturing resources, product experience, certifications and commercial conditions before recommending a supplier.</p>
           </div>
           <div class="feature">
             <div class="feature-num">03</div>
-            <h3>Supplier-Focused</h3>
-            <p>We look beyond quotations to evaluate supplier suitability.</p>
+            <h3>China-Based Execution</h3>
+            <p>We work directly with suppliers in China. Communication, quotation comparison, sample follow-up, product development and production coordination can be handled locally.</p>
           </div>
           <div class="feature">
             <div class="feature-num">04</div>
-            <h3>Practical</h3>
-            <p>We focus on manufacturability, cost, quality and delivery.</p>
-          </div>
-          <div class="feature">
-            <div class="feature-num">05</div>
-            <h3>One Point of Contact</h3>
-            <p>One partner to help coordinate your China sourcing activities.</p>
+            <h3>Procurement Support</h3>
+            <p>From supplier selection to production. We help turn an approved product and supplier into an executable purchasing process.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ 中间获客入口（网站优化意见822：页面中间CTA） ============ -->
+    <section class="section section-mid-cta" aria-labelledby="midCtaTitle">
+      <div class="container mid-cta-inner">
+        <h2 id="midCtaTitle">Have a product requirement?</h2>
+        <p>Send us your product, specifications, target quantity and market. We'll review your request and advise on the next step.</p>
+        <a href="#contact" class="btn btn-primary btn-lg">Send Your Requirement</a>
       </div>
     </section>
 
     <!-- ============ SECTION 13 — CTA ============ -->
     <section class="section section-dark cta-block" aria-labelledby="ctaTitle">
       <div class="container cta-inner">
-        <h2 id="ctaTitle">Have a Product to Source or Develop in China?</h2>
-        <p>Tell us what you're looking for. We'll help you explore the right sourcing and manufacturing options.</p>
-        <a href="#contact" class="btn btn-primary btn-lg">Start Your Project →</a>
+        <h2 id="ctaTitle">Looking for a Reliable China Sourcing Partner?</h2>
+        <p>Whether you need to find a supplier, verify an existing supplier, develop a new product or manage procurement in China, let's discuss your project.</p>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-primary btn-lg">Start a Sourcing Project</a>
+          <a href="#contact?service=verify-supplier" class="btn btn-ghost btn-lg">Verify a Supplier</a>
+        </div>
       </div>
     </section>
 
@@ -626,8 +727,8 @@
     <section class="section" id="contact" aria-labelledby="contactTitle">
       <div class="container contact-grid">
         <div class="contact-intro">
-          <h2 id="contactTitle" class="section-title">Start Your China Sourcing Project</h2>
-          <p class="section-sub">Share your product, spec, quantity and target market. We reply within 24 hours.</p>
+          <h2 id="contactTitle" class="section-title" data-default="Start Your China Sourcing Project" data-verify="Verify a Supplier in China">Start Your China Sourcing Project</h2>
+          <p class="section-sub" id="contactSubtitle" data-default="Tell us what you need. We will review your request and recommend the most practical next step." data-verify="Share the supplier's website, Alibaba/1688 link or contact. We will assess capability, product experience and commercial conditions.">Tell us what you need. We will review your request and recommend the most practical next step.</p>
           <ul class="contact-info">
             <li><span>Email</span><a href="mailto:Leo@gfiretech.com">Leo@gfiretech.com</a> <button type="button" class="btn-link btn-copy" data-email="Leo@gfiretech.com">Copy</button></li>
             <li class="contact-social">
@@ -643,6 +744,7 @@
         <!-- 表单：提交到 Formspree（ID xyegodab），询盘邮件转发到 Leo@gfiretech.com -->
         <form class="quote-form" id="quoteForm"
               action="https://formspree.io/f/xyegodab" method="POST" novalidate>
+          <p class="form-privacy">Your information is used only to respond to your inquiry. We never share it with third parties.</p>
           <div class="field">
             <label for="name">Full Name *</label>
             <input type="text" id="name" name="name" autocomplete="name" required />
@@ -658,6 +760,22 @@
           <div class="field">
             <label for="email">Work Email *</label>
             <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field field-full">
+            <label for="helptype">What can we help you with? *</label>
+            <select id="helptype" name="helptype" required>
+              <option value="">Select…</option>
+              <option>Find suppliers</option>
+              <option>Verify a supplier</option>
+              <option>Product development</option>
+              <option>OEM / ODM</option>
+              <option>Procurement support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field field-full conditional" id="supplierInfoField">
+            <label for="supplier_info">Supplier to verify *</label>
+            <textarea id="supplier_info" name="supplier_info" rows="3" placeholder="Supplier name, website, location, and the product they offer"></textarea>
           </div>
           <div class="field">
             <label for="whatsapp">WhatsApp</label>

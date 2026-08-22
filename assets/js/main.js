@@ -51,6 +51,112 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* ---------- 区块标题橙色短杠：滚动进入视口时「画出」 ---------- */
+  var titleEls = document.querySelectorAll(".section-title");
+  if ("IntersectionObserver" in window) {
+    var tio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          tio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    titleEls.forEach(function (el) { tio.observe(el); });
+  } else {
+    titleEls.forEach(function (el) { el.classList.add("in-view"); });
+  }
+
+  /* ---------- 询盘表单：根据入口自动切换服务类型 ----------
+     支持 #contact?service=verify-supplier 自动展开「供应商验证」字段。
+     同时根据下拉选择动态显示/隐藏供应商信息输入框。
+     修复：hashchange + 链接点击都会触发，避免同页内点击无反应。 */
+  (function () {
+    var form = document.getElementById("quoteForm");
+    if (!form) return;
+    var helpType = form.querySelector("#helptype");
+    var supplierField = document.getElementById("supplierInfoField");
+    var supplierInput = document.getElementById("supplier_info");
+    if (!helpType || !supplierField || !supplierInput) return;
+
+    function setSupplierVisible(show) {
+      supplierField.classList.toggle("is-visible", show);
+      supplierInput.required = show;
+      if (!show) supplierInput.value = "";
+    }
+
+    helpType.addEventListener("change", function () {
+      setSupplierVisible(helpType.value === "Verify a supplier");
+    });
+
+    var contactTitle = document.getElementById("contactTitle");
+    var contactSubtitle = document.getElementById("contactSubtitle");
+
+    function setContactMode(mode) {
+      // mode: 'verify' | 'default'
+      if (contactTitle) {
+        contactTitle.textContent = contactTitle.getAttribute("data-" + mode) || contactTitle.getAttribute("data-default");
+      }
+      if (contactSubtitle) {
+        contactSubtitle.textContent = contactSubtitle.getAttribute("data-" + mode) || contactSubtitle.getAttribute("data-default");
+      }
+    }
+
+    function applyContactHash(force) {
+      var rawHash = window.location.hash || "";
+      var hashParts = rawHash.split("?");
+      var anchor = hashParts[0];
+      var params = hashParts[1] ? new URLSearchParams(hashParts[1]) : new URLSearchParams();
+      var isVerify = anchor === "#contact" && params.get("service") === "verify-supplier";
+
+      if (anchor === "#contact" || force) {
+        if (isVerify) {
+          helpType.value = "Verify a supplier";
+          setSupplierVisible(true);
+          setContactMode("verify");
+        } else {
+          helpType.value = "Find suppliers";
+          setSupplierVisible(false);
+          setContactMode("default");
+        }
+        var contactSection = document.getElementById("contact");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+
+    // 页面加载时解析
+    applyContactHash();
+
+    // hash 变化时解析（支持同页内点击）
+    window.addEventListener("hashchange", function () {
+      applyContactHash();
+    });
+
+    // 强制处理带 service=verify-supplier 的链接（浏览器不会二次触发 hashchange）
+    document.querySelectorAll('a[href="#contact?service=verify-supplier"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        // 如果已经是该 hash，浏览器不会做任何事，必须手动处理
+        if (window.location.hash === "#contact?service=verify-supplier") {
+          e.preventDefault();
+          applyContactHash(true);
+        }
+      });
+    });
+
+    // 普通 #contact 链接点击时重置为默认 sourcing 状态
+    document.querySelectorAll('a[href="#contact"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        if (window.location.hash === "#contact" || window.location.hash === "#contact?service=verify-supplier") {
+          e.preventDefault();
+          window.location.hash = "#contact";
+          applyContactHash(true);
+        }
+      });
+    });
+  })();
+
   /* ---------- 询盘表单（Formspree 异步提交） ----------
      提交到真实 Formspree 表单 xyegodab，询盘以邮件形式转发到 Leo@gfiretech.com。
      采用 fetch 异步提交（Formspree 已配置 CORS），不刷新页面；
@@ -71,9 +177,17 @@
       var email = form.querySelector("#email");
       var product = form.querySelector("#product");
       var message = form.querySelector("#message");
+      var helpType = form.querySelector("#helptype");
+      var supplierInfo = form.querySelector("#supplier_info");
       if (!name.value.trim() || !email.value.trim() || !product.value.trim() || !message.value.trim()) {
         status.textContent = "Please fill in Name, Email, Product and Message.";
         status.className = "form-status err";
+        return;
+      }
+      if (helpType && helpType.value === "Verify a supplier" && (!supplierInfo || !supplierInfo.value.trim())) {
+        status.textContent = "Please provide the supplier information you want us to verify.";
+        status.className = "form-status err";
+        if (supplierInfo) supplierInfo.focus();
         return;
       }
       // 邮箱格式
