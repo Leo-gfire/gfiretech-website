@@ -74,10 +74,21 @@
   (function () {
     var form = document.getElementById("quoteForm");
     if (!form) return;
-    var helpType = form.querySelector("#helptype");
+    var helpTypeGroup = form.querySelector("#helptype");
+    var helpTypeRadios = form.querySelectorAll('input[name="helptype"]');
     var supplierField = document.getElementById("supplierInfoField");
     var supplierInput = document.getElementById("supplier_info");
-    if (!helpType || !supplierField || !supplierInput) return;
+    if (!helpTypeGroup || !supplierField || !supplierInput) return;
+
+    function getHelpTypeValue() {
+      var checked = form.querySelector('input[name="helptype"]:checked');
+      return checked ? checked.value : "";
+    }
+    function setHelpTypeValue(val) {
+      helpTypeRadios.forEach(function (r) {
+        r.checked = (r.value === val);
+      });
+    }
 
     function setSupplierVisible(show) {
       supplierField.classList.toggle("is-visible", show);
@@ -85,8 +96,8 @@
       if (!show) supplierInput.value = "";
     }
 
-    helpType.addEventListener("change", function () {
-      setSupplierVisible(helpType.value === "Verify a supplier");
+    helpTypeGroup.addEventListener("change", function () {
+      setSupplierVisible(getHelpTypeValue() === "Verify a Supplier");
     });
 
     var contactTitle = document.getElementById("contactTitle");
@@ -111,11 +122,11 @@
 
       if (anchor === "#contact" || force) {
         if (isVerify) {
-          helpType.value = "Verify a supplier";
+          setHelpTypeValue("Verify a Supplier");
           setSupplierVisible(true);
           setContactMode("verify");
         } else {
-          helpType.value = "Find suppliers";
+          setHelpTypeValue("Find a Supplier");
           setSupplierVisible(false);
           setContactMode("default");
         }
@@ -172,19 +183,23 @@
       var gotcha = form.querySelector('[name="_gotcha"]');
       if (gotcha && gotcha.value) return;
 
-      // 前端校验：必填项
+      // 前端校验：必填项（按优化意见：Name/Country/Email/helptype/Message 必填，Product 可选）
       var name = form.querySelector("#name");
+      var country = form.querySelector("#country");
       var email = form.querySelector("#email");
-      var product = form.querySelector("#product");
       var message = form.querySelector("#message");
-      var helpType = form.querySelector("#helptype");
       var supplierInfo = form.querySelector("#supplier_info");
-      if (!name.value.trim() || !email.value.trim() || !product.value.trim() || !message.value.trim()) {
-        status.textContent = "Please fill in Name, Email, Product and Message.";
+      if (!name.value.trim() || !country.value.trim() || !email.value.trim() || !message.value.trim()) {
+        status.textContent = "Please fill in Name, Country, Email and Message.";
         status.className = "form-status err";
         return;
       }
-      if (helpType && helpType.value === "Verify a supplier" && (!supplierInfo || !supplierInfo.value.trim())) {
+      if (!getHelpTypeValue()) {
+        status.textContent = "Please select what you need help with.";
+        status.className = "form-status err";
+        return;
+      }
+      if (getHelpTypeValue() === "Verify a Supplier" && (!supplierInfo || !supplierInfo.value.trim())) {
         status.textContent = "Please provide the supplier information you want us to verify.";
         status.className = "form-status err";
         if (supplierInfo) supplierInfo.focus();

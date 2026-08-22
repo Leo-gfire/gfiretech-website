@@ -754,67 +754,69 @@
             <input type="text" id="company" name="company" autocomplete="organization" />
           </div>
           <div class="field">
-            <label for="country">Country</label>
-            <input type="text" id="country" name="country" autocomplete="country-name" placeholder="e.g. USA / Germany" />
+            <label for="country">Country *</label>
+            <input type="text" id="country" name="country" autocomplete="country-name" placeholder="e.g. USA / Germany" required />
           </div>
           <div class="field">
             <label for="email">Work Email *</label>
             <input type="email" id="email" name="email" autocomplete="email" required />
           </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="text" id="whatsapp" name="whatsapp" placeholder="+86 / +1 ..." />
+          </div>
+
           <div class="field field-full">
-            <label for="helptype">What can we help you with? *</label>
-            <select id="helptype" name="helptype" required>
-              <option value="">Select…</option>
-              <option>Find suppliers</option>
-              <option>Verify a supplier</option>
-              <option>Product development</option>
-              <option>OEM / ODM</option>
-              <option>Procurement support</option>
-              <option>Other</option>
-            </select>
+            <label class="field-label-strong">What can we help you with? *</label>
+            <div class="radio-group" id="helptype" role="radiogroup" aria-label="What can we help you with?">
+              <label class="radio-item"><input type="radio" name="helptype" value="Find a Supplier" required /> Find a Supplier</label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Verify a Supplier" /> Verify a Supplier</label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Product Development" /> Product Development</label>
+              <label class="radio-item"><input type="radio" name="helptype" value="OEM / ODM" /> OEM / ODM</label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Procurement Support" /> Procurement Support</label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Other" /> Other</label>
+            </div>
           </div>
           <div class="field field-full conditional" id="supplierInfoField">
             <label for="supplier_info">Supplier to verify *</label>
             <textarea id="supplier_info" name="supplier_info" rows="3" placeholder="Supplier name, website, location, and the product they offer"></textarea>
           </div>
+
           <div class="field">
-            <label for="whatsapp">WhatsApp</label>
-            <input type="text" id="whatsapp" name="whatsapp" placeholder="+86 / +1 ..." />
+            <label for="product">Product / Project (Optional)</label>
+            <input type="text" id="product" name="product" placeholder="What are you looking for?" />
           </div>
           <div class="field">
-            <label for="product">Product / Project *</label>
-            <input type="text" id="product" name="product" required placeholder="What are you looking for?" />
-          </div>
-          <div class="field">
-            <label for="quantity">Estimated Quantity</label>
+            <label for="quantity">Estimated Quantity (Optional)</label>
             <input type="text" id="quantity" name="quantity" placeholder="e.g. 500 pcs" />
+            <p class="field-hint">An estimate is enough if the exact quantity is not yet known.</p>
           </div>
           <div class="field">
-            <label for="destination">Target Market</label>
+            <label for="destination">Target Market (Optional)</label>
             <input type="text" id="destination" name="destination" placeholder="e.g. USA / EU" />
           </div>
           <div class="field">
-            <label for="targetprice">Target Price</label>
+            <label for="targetprice">Target Price (Optional)</label>
             <input type="text" id="targetprice" name="targetprice" placeholder="e.g. FOB $XX" />
           </div>
           <div class="field">
-            <label for="odm">OEM / ODM Required?</label>
+            <label for="odm">OEM / ODM Required? (Optional)</label>
             <select id="odm" name="odm">
               <option value="">Select…</option>
-              <option>OEM (your brand, our sourcing)</option>
-              <option>ODM (customized development)</option>
-              <option>Existing product, sourcing only</option>
-              <option>Not sure yet</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Not Sure</option>
             </select>
           </div>
           <div class="field field-full">
             <label for="message">Message *</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            <textarea id="message" name="message" rows="4" required placeholder="Tell us briefly what you are looking for."></textarea>
+            <p class="field-hint">Tell us briefly what you are looking for. If you don't have all the details yet, that's OK.</p>
           </div>
           <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <input type="hidden" name="_subject" value="New RFQ from GFIRE TECH.com" />
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+          <button type="submit" class="btn btn-primary btn-block">Send Your Requirement</button>
           <p class="copy-email-line">
             No mail app? Copy our email:
             <button type="button" class="btn-link" id="copyEmailBtn" data-email="Leo@gfiretech.com">Copy Leo@gfiretech.com</button>
