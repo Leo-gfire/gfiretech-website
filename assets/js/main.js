@@ -194,6 +194,11 @@
   var FORM_ENDPOINT = "https://formspree.io/f/xyegodab";
   var form = document.getElementById("quoteForm");
   var status = document.getElementById("formStatus");
+  // 取选中的 helptype 单选值（独立 IIFE 内重新实现，避免跨 IIFE 引用私有函数导致 ReferenceError）
+  function getHelpTypeValue() {
+    var checked = form && form.querySelector('input[name="helptype"]:checked');
+    return checked ? checked.value : "";
+  }
   if (form && status) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
