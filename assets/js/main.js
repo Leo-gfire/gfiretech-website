@@ -96,8 +96,37 @@
       if (!show) supplierInput.value = "";
     }
 
+    // 智能字段显示：根据选择的服务类型显示相关字段
+    var smartFields = form.querySelectorAll(".smart-field");
+    var TYPE_MAP = {
+      "Find a Supplier": "find",
+      "Verify a Supplier": "verify",
+      "Product Development": "develop",
+      "OEM / ODM": "odm",
+      "Procurement Support": "procure",
+      "Other": "other"
+    };
+    function updateSmartFields(type) {
+      smartFields.forEach(function (f) {
+        var shows = (f.getAttribute("data-show") || "").split(",");
+        var visible = shows.indexOf(type) !== -1;
+        f.classList.toggle("is-visible", visible);
+        // 隐藏时清空值，避免脏数据提交
+        if (!visible) {
+          var inp = f.querySelector("input, select, textarea");
+          if (inp) inp.value = "";
+        }
+      });
+    }
+
+    function applyType(type) {
+      setSupplierVisible(type === "verify");
+      updateSmartFields(type);
+    }
+
     helpTypeGroup.addEventListener("change", function () {
-      setSupplierVisible(getHelpTypeValue() === "Verify a Supplier");
+      var t = TYPE_MAP[getHelpTypeValue()] || "";
+      applyType(t);
     });
 
     function applyContactHash(force) {
@@ -110,11 +139,12 @@
       if (anchor === "#contact" || force) {
         if (isVerify) {
           setHelpTypeValue("Verify a Supplier");
-          setSupplierVisible(true);
+          applyType("verify");
         } else if (force) {
-          // 普通入口：不预设选项，让用户自己选
+          // 普通入口：不预设选项，让用户自己选（所有智能字段隐藏）
           setHelpTypeValue("");
           setSupplierVisible(false);
+          updateSmartFields("");
         }
         var contactSection = document.getElementById("contact");
         if (contactSection) {

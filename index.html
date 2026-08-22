@@ -802,24 +802,24 @@
             <textarea id="supplier_info" name="supplier_info" rows="3" placeholder="Supplier name, website, location, and the product they offer"></textarea>
           </div>
 
-          <div class="field">
+          <div class="field smart-field" data-show="find,develop,odm,procure,other" id="productField">
             <label for="product">Product / Project (Optional)</label>
             <input type="text" id="product" name="product" placeholder="What are you looking for?" />
           </div>
-          <div class="field">
+          <div class="field smart-field" data-show="find,develop,odm,procure,other" id="quantityField">
             <label for="quantity">Estimated Quantity (Optional)</label>
             <input type="text" id="quantity" name="quantity" placeholder="e.g. 500 pcs" />
             <p class="field-hint">An estimate is enough if the exact quantity is not yet known.</p>
           </div>
-          <div class="field">
+          <div class="field smart-field" data-show="find,develop,odm,procure,other" id="marketField">
             <label for="destination">Target Market (Optional)</label>
             <input type="text" id="destination" name="destination" placeholder="e.g. USA / EU" />
           </div>
-          <div class="field">
+          <div class="field smart-field" data-show="find,develop,odm,procure,other" id="priceField">
             <label for="targetprice">Target Price (Optional)</label>
             <input type="text" id="targetprice" name="targetprice" placeholder="e.g. FOB $XX" />
           </div>
-          <div class="field">
+          <div class="field smart-field" data-show="odm" id="odmField">
             <label for="odm">OEM / ODM Required? (Optional)</label>
             <select id="odm" name="odm">
               <option value="">Select…</option>

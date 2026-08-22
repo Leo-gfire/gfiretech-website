@@ -645,6 +645,9 @@ a:hover { text-decoration: underline; }
 .field-hint {
   margin: 6px 0 0; font-size: 0.8rem; color: var(--muted); line-height: 1.5;
 }
+/* 智能字段：默认隐藏，满足 data-show 条件时显示 */
+.smart-field { display: none; }
+.smart-field.is-visible { display: flex; }
 
 /* ---------- SECTION 15 Footer ---------- */
 .site-footer { background: var(--bg-dark); color: var(--on-dark-muted); padding: 48px 0 22px; }
