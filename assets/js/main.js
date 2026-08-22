@@ -100,19 +100,6 @@
       setSupplierVisible(getHelpTypeValue() === "Verify a Supplier");
     });
 
-    var contactTitle = document.getElementById("contactTitle");
-    var contactSubtitle = document.getElementById("contactSubtitle");
-
-    function setContactMode(mode) {
-      // mode: 'verify' | 'default'
-      if (contactTitle) {
-        contactTitle.textContent = contactTitle.getAttribute("data-" + mode) || contactTitle.getAttribute("data-default");
-      }
-      if (contactSubtitle) {
-        contactSubtitle.textContent = contactSubtitle.getAttribute("data-" + mode) || contactSubtitle.getAttribute("data-default");
-      }
-    }
-
     function applyContactHash(force) {
       var rawHash = window.location.hash || "";
       var hashParts = rawHash.split("?");
@@ -124,11 +111,10 @@
         if (isVerify) {
           setHelpTypeValue("Verify a Supplier");
           setSupplierVisible(true);
-          setContactMode("verify");
-        } else {
-          setHelpTypeValue("Find a Supplier");
+        } else if (force) {
+          // 普通入口：不预设选项，让用户自己选
+          setHelpTypeValue("");
           setSupplierVisible(false);
-          setContactMode("default");
         }
         var contactSection = document.getElementById("contact");
         if (contactSection) {
