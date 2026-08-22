@@ -572,11 +572,15 @@ a:hover { text-decoration: underline; }
 .cta-block .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ---------- SECTION 14 Contact ---------- */
-.contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 44px; align-items: stretch; }
-.contact-intro { display: flex; flex-direction: column; }
+.contact-grid { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 44px; align-items: stretch; }
+.contact-intro { display: flex; flex-direction: column; justify-content: center; }
 .contact-intro .section-title { font-size: 1.8rem; }
-.contact-info { list-style: none; padding: 0; margin: 18px 0 0; margin-top: auto; padding-top: 24px; }
-.contact-info li { margin-bottom: 14px; font-size: 0.95rem; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.contact-info { list-style: none; padding: 0; margin: 22px 0 0; }
+.contact-info li {
+  margin-bottom: 12px; font-size: 0.95rem; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px 14px;
+}
 .contact-info li > span { color: var(--muted); min-width: 70px; font-weight: 600; }
 .contact-info a { color: var(--ink); font-weight: 600; }
 .contact-info a:hover { color: var(--accent); }
