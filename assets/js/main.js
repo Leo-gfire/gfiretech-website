@@ -80,6 +80,9 @@
     var supplierInput = document.getElementById("supplier_info");
     if (!helpTypeGroup || !supplierField || !supplierInput) return;
 
+    // 初始状态：无论入口如何，supplier 字段默认隐藏且非必填（仅在 Verify a Supplier 时显示）
+    setSupplierVisible(false);
+
     function getHelpTypeValue() {
       var checked = form.querySelector('input[name="helptype"]:checked');
       return checked ? checked.value : "";
@@ -199,14 +202,13 @@
       var gotcha = form.querySelector('[name="_gotcha"]');
       if (gotcha && gotcha.value) return;
 
-      // 前端校验：必填项（按优化意见：Name/Country/Email/helptype/Message 必填，Product 可选）
+      // 前端校验：必填项（Name / Email / helptype / Message 必填；Country 按优化意见为非必填）
       var name = form.querySelector("#name");
-      var country = form.querySelector("#country");
       var email = form.querySelector("#email");
       var message = form.querySelector("#message");
       var supplierInfo = form.querySelector("#supplier_info");
-      if (!name.value.trim() || !country.value.trim() || !email.value.trim() || !message.value.trim()) {
-        status.textContent = "Please fill in Name, Country, Email and Message.";
+      if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+        status.textContent = "Please fill in Name, Email and Message.";
         status.className = "form-status err";
         return;
       }
