@@ -410,26 +410,33 @@
       if (pNextBtn) pNextBtn.disabled = (idx >= productTabs.length - 1);
     }
 
+    function pScrollTabIntoView(idx) {
+      var tab = productTabs[idx];
+      var container = tab && tab.closest(".product-tabs");
+      if (!tab || !container) return;
+      var pos = tab.offsetLeft - productTabs[0].offsetLeft;
+      var target = pos - (container.clientWidth - tab.offsetWidth) / 2;
+      if (target < 0) target = 0;
+      container.scrollTo({ left: target, behavior: "smooth" });
+    }
+
     function pUpdateTabs(idx) {
       productTabs.forEach(function (t, i) {
         var on = i === idx;
         t.classList.toggle("active", on);
         t.setAttribute("aria-selected", on ? "true" : "false");
       });
-      // tab 数量多的时候，保证当前 tab 始终可见
-      if (productTabs[idx]) {
-        productTabs[idx].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-      }
+      // tab 数量多时，把当前 tab 横向滚动到可视区域（只滚 tab 栏，不滚页面）
+      pScrollTabIntoView(idx);
     }
 
     function pGoTo(i) {
       var count = productTabs.length;
       if (count === 0) return;
       var idx = ((i % count) + count) % count;
-      var slide = productTrack.children[idx];
-      if (slide && slide.scrollIntoView) {
-        slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-      }
+      var w = productTrack.clientWidth;
+      // 只在轮播容器内横向滚动，避免 scrollIntoView 把整个页面拉回该区块
+      if (w) productTrack.scrollTo({ left: idx * w, behavior: "smooth" });
     }
 
     function pNext() { pGoTo(pCurrent + 1); }
