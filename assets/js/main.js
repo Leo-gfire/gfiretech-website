@@ -393,47 +393,109 @@
     updateArrows(0);
   }
 
-  /* ---------- Product carousel 切换 ---------- */
+  /* ---------- Product carousel 切换 + 自动轮播 ---------- */
+  var productCarousel = document.querySelector(".product-carousel");
   var productTrack = document.querySelector(".product-track");
   var productTabs = document.querySelectorAll(".product-tab");
   if (productTrack && productTabs.length) {
-    productTabs.forEach(function (tab, i) {
-      tab.addEventListener("click", function () {
-        var slide = productTrack.children[i];
-        if (slide && slide.scrollIntoView) {
-          slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-        }
-      });
-    });
     var pPrevBtn = document.querySelector(".product-arrow-prev");
     var pNextBtn = document.querySelector(".product-arrow-next");
     var pCurrent = 0;
+    var AUTO_INTERVAL = 5000; // 5 秒自动切换
+    var autoTimer = null;
+    var isPaused = false;
+
     function pUpdateArrows(idx) {
       if (pPrevBtn) pPrevBtn.disabled = (idx <= 0);
       if (pNextBtn) pNextBtn.disabled = (idx >= productTabs.length - 1);
     }
-    if (pPrevBtn) pPrevBtn.addEventListener("click", function () {
-      var i = Math.max(0, pCurrent - 1);
-      productTrack.children[i] && productTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+
+    function pUpdateTabs(idx) {
+      productTabs.forEach(function (t, i) {
+        var on = i === idx;
+        t.classList.toggle("active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      // tab 数量多的时候，保证当前 tab 始终可见
+      if (productTabs[idx]) {
+        productTabs[idx].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }
+
+    function pGoTo(i) {
+      var count = productTabs.length;
+      if (count === 0) return;
+      var idx = ((i % count) + count) % count;
+      var slide = productTrack.children[idx];
+      if (slide && slide.scrollIntoView) {
+        slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+      }
+    }
+
+    function pNext() { pGoTo(pCurrent + 1); }
+    function pPrev() { pGoTo(pCurrent - 1); }
+
+    function pStartAuto() {
+      pStopAuto();
+      if (productTabs.length <= 1 || isPaused) return;
+      autoTimer = setTimeout(function tick() {
+        if (!isPaused) pNext();
+        autoTimer = setTimeout(tick, AUTO_INTERVAL);
+      }, AUTO_INTERVAL);
+    }
+
+    function pStopAuto() {
+      if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+    }
+
+    function pResetAuto() {
+      pStopAuto();
+      pStartAuto();
+    }
+
+    // Tab 点击
+    productTabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        pGoTo(i);
+        pResetAuto();
+      });
     });
-    if (pNextBtn) pNextBtn.addEventListener("click", function () {
-      var i = Math.min(productTabs.length - 1, pCurrent + 1);
-      productTrack.children[i] && productTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-    });
+
+    // 左右箭头
+    if (pPrevBtn) pPrevBtn.addEventListener("click", function () { pPrev(); pResetAuto(); });
+    if (pNextBtn) pNextBtn.addEventListener("click", function () { pNext(); pResetAuto(); });
+
+    // 滚动同步：根据 scrollLeft 反推当前索引
     var pScrollTimer;
     productTrack.addEventListener("scroll", function () {
       clearTimeout(pScrollTimer);
       pScrollTimer = setTimeout(function () {
         var w = productTrack.clientWidth;
-        pCurrent = Math.round(productTrack.scrollLeft / Math.max(w, 1));
-        productTabs.forEach(function (t, i) {
-          var on = i === pCurrent;
-          t.classList.toggle("active", on);
-          t.setAttribute("aria-selected", on ? "true" : "false");
-        });
-        pUpdateArrows(pCurrent);
+        var newIdx = Math.round(productTrack.scrollLeft / Math.max(w, 1));
+        if (newIdx !== pCurrent) {
+          pCurrent = newIdx;
+          pUpdateTabs(pCurrent);
+          pUpdateArrows(pCurrent);
+        }
       }, 80);
     }, { passive: true });
+
+    // 鼠标悬停 / 键盘聚焦时暂停；离开后继续
+    if (productCarousel) {
+      productCarousel.addEventListener("mouseenter", function () { isPaused = true; pStopAuto(); });
+      productCarousel.addEventListener("mouseleave", function () { isPaused = false; pStartAuto(); });
+      productCarousel.addEventListener("focusin", function () { isPaused = true; pStopAuto(); });
+      productCarousel.addEventListener("focusout", function () { isPaused = false; pStartAuto(); });
+      productCarousel.addEventListener("touchstart", function () { pResetAuto(); }, { passive: true });
+    }
+
+    // 页面切到后台时暂停，切回后继续
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { pStopAuto(); } else if (!isPaused) { pStartAuto(); }
+    });
+
+    pUpdateTabs(0);
     pUpdateArrows(0);
+    pStartAuto();
   }
 })();
