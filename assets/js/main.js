@@ -326,7 +326,23 @@
     });
   });
 
-  /* ---------- Case study 视频切换 ---------- */
+  /* ---------- Case study 视频切换 + 全局播放互斥 ---------- */
+  var allCaseVideos = document.querySelectorAll(".case-slide video");
+  function pauseOtherCaseVideos(currentVideo) {
+    allCaseVideos.forEach(function (v) {
+      if (v !== currentVideo && !v.paused) {
+        v.pause();
+      }
+    });
+  }
+  if (allCaseVideos.length) {
+    allCaseVideos.forEach(function (v) {
+      v.addEventListener("play", function () {
+        pauseOtherCaseVideos(v);
+      });
+    });
+  }
+
   var caseVideo = document.getElementById("caseVideo");
   if (caseVideo) {
     document.querySelectorAll(".case-thumb").forEach(function (btn) {
@@ -349,48 +365,61 @@
   var caseTrack = document.querySelector(".case-track");
   var caseTabs = document.querySelectorAll(".case-tab");
   if (caseTrack && caseTabs.length) {
+    var cPrevBtn = document.querySelector(".case-arrow-prev");
+    var cNextBtn = document.querySelector(".case-arrow-next");
+    var caseCurrentIdx = 0;
+
+    function pauseVideoInSlide(idx) {
+      var slide = caseTrack.children[idx];
+      if (!slide) return;
+      var video = slide.querySelector("video");
+      if (video && !video.paused) video.pause();
+    }
+
+    function caseScrollTo(idx) {
+      var w = caseTrack.clientWidth;
+      caseTrack.scrollTo({ left: idx * w, behavior: "smooth" });
+    }
+
+    function updateCaseArrows(idx) {
+      if (cPrevBtn) cPrevBtn.disabled = (idx <= 0);
+      if (cNextBtn) cNextBtn.disabled = (idx >= caseTabs.length - 1);
+    }
+
     caseTabs.forEach(function (tab, i) {
       tab.addEventListener("click", function () {
-        var slide = caseTrack.children[i];
-        if (slide && slide.scrollIntoView) {
-          slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-        }
+        pauseVideoInSlide(caseCurrentIdx);
+        caseScrollTo(i);
       });
     });
 
-    /* 左右箭头按钮 */
-    var prevBtn = document.querySelector(".case-arrow-prev");
-    var nextBtn = document.querySelector(".case-arrow-next");
-    function updateArrows(idx) {
-      if (prevBtn) prevBtn.disabled = (idx <= 0);
-      if (nextBtn) nextBtn.disabled = (idx >= caseTabs.length - 1);
-    }
-    if (prevBtn) prevBtn.addEventListener("click", function () {
-      var i = Math.max(0, (currentIdx || 0) - 1);
-      caseTrack.children[i] && caseTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    if (cPrevBtn) cPrevBtn.addEventListener("click", function () {
+      var i = Math.max(0, caseCurrentIdx - 1);
+      pauseVideoInSlide(caseCurrentIdx);
+      caseScrollTo(i);
     });
-    if (nextBtn) nextBtn.addEventListener("click", function () {
-      var i = Math.min(caseTabs.length - 1, (currentIdx || 0) + 1);
-      caseTrack.children[i] && caseTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    if (cNextBtn) cNextBtn.addEventListener("click", function () {
+      var i = Math.min(caseTabs.length - 1, caseCurrentIdx + 1);
+      pauseVideoInSlide(caseCurrentIdx);
+      caseScrollTo(i);
     });
 
     /* 滚动同步 tab + arrow 状态 */
-    var scrollTimer;
-    var currentIdx = 0;
+    var caseScrollTimer;
     caseTrack.addEventListener("scroll", function () {
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(function () {
+      clearTimeout(caseScrollTimer);
+      caseScrollTimer = setTimeout(function () {
         var w = caseTrack.clientWidth;
-        currentIdx = Math.round(caseTrack.scrollLeft / Math.max(w, 1));
+        caseCurrentIdx = Math.round(caseTrack.scrollLeft / Math.max(w, 1));
         caseTabs.forEach(function (t, i) {
-          var on = i === currentIdx;
+          var on = i === caseCurrentIdx;
           t.classList.toggle("active", on);
           t.setAttribute("aria-selected", on ? "true" : "false");
         });
-        updateArrows(currentIdx);
+        updateCaseArrows(caseCurrentIdx);
       }, 80);
     }, { passive: true });
-    updateArrows(0);
+    updateCaseArrows(0);
   }
 
   /* ---------- Product carousel 切换 + 自动轮播 ---------- */
