@@ -801,3 +801,33 @@ a:hover { text-decoration: underline; }
   .flow-line { gap: 8px; }
   .flow-step { flex: 1 1 100%; justify-content: flex-start; }
 }
+
+/* ---------- Services 页：服务视觉卡（替代重复照片） ---------- */
+.svc-visual {
+  flex: 1 1 auto; display: flex; flex-direction: column;
+  position: relative; padding: 30px 28px;
+  background:
+    radial-gradient(440px 200px at 100% 0%, rgba(245,135,31,0.12), transparent 70%),
+    linear-gradient(135deg, #16181c, #1f2228);
+  border: 1px solid rgba(245,135,31,0.35);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.svc-visual-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.svc-visual .svc-icon {
+  flex: none; width: 52px; height: 52px; border-radius: 12px;
+  background: rgba(245,135,31,0.12); color: var(--accent);
+  display: grid; place-items: center;
+}
+.svc-visual .svc-icon svg { width: 28px; height: 28px; display: block; }
+.svc-visual-no {
+  font-size: 4.4rem; font-weight: 800; line-height: 1; letter-spacing: -2px;
+  color: rgba(255,255,255,0.14); user-select: none;
+}
+.svc-visual-body { margin-top: auto; padding-top: 26px; }
+.svc-visual-kicker {
+  margin: 0 0 6px; font-size: 0.76rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.2px; color: var(--accent);
+}
+.svc-visual-title { margin: 0 0 8px; color: #fff; font-size: 1.32rem; font-weight: 800; line-height: 1.25; }
+.svc-visual-desc { margin: 0; color: var(--on-dark-muted); font-size: 0.92rem; line-height: 1.62; }
