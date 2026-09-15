@@ -775,3 +775,29 @@ a:hover { text-decoration: underline; }
 @media (max-width: 600px) {
   .verify-page-card { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- Services 页：标签组（Best for 等） ---------- */
+.tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 0; }
+.tag {
+  background: var(--bg-alt); border: 1px solid var(--border); border-radius: 999px;
+  padding: 7px 15px; font-size: 0.86rem; font-weight: 600; color: var(--ink-2);
+}
+.section-alt .tag { background: #fff; }
+
+/* ---------- Services 页：流程线（From concept to production） ---------- */
+.flow-line { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 6px; margin: 14px 0 0; }
+.flow-step {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--bg-alt); border: 1px solid var(--border); border-radius: 999px;
+  padding: 8px 15px; font-size: 0.88rem; font-weight: 600; color: var(--ink-2); white-space: nowrap;
+}
+.flow-step .n {
+  flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px;
+  border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.74rem; font-weight: 800;
+}
+.flow-arrow { color: var(--muted); font-weight: 800; }
+@media (max-width: 600px) {
+  .flow-arrow { display: none; }
+  .flow-line { gap: 8px; }
+  .flow-step { flex: 1 1 100%; justify-content: flex-start; }
+}
