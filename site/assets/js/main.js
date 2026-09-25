@@ -174,6 +174,23 @@
     });
   });
 
+  /* ---------- 视频播放控制 ----------
+     规则：视频仅由浏览者主动点击播放；
+     切换案例/产品标签、点箭头、滑动轮播或页面滚走时，自动停止所有正在播放的视频。 */
+  function pauseAllVideos() {
+    document.querySelectorAll("video").forEach(function (v) {
+      if (!v.paused) v.pause();
+    });
+  }
+  if ("IntersectionObserver" in window) {
+    var videoObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting && !entry.target.paused) entry.target.pause();
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll("video").forEach(function (v) { videoObserver.observe(v); });
+  }
+
   /* ---------- Case study 视频切换 ---------- */
   var caseVideo = document.getElementById("caseVideo");
   if (caseVideo) {
@@ -199,6 +216,7 @@
   if (caseTrack && caseTabs.length) {
     caseTabs.forEach(function (tab, i) {
       tab.addEventListener("click", function () {
+        pauseAllVideos();
         var slide = caseTrack.children[i];
         if (slide && slide.scrollIntoView) {
           slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
@@ -214,10 +232,12 @@
       if (nextBtn) nextBtn.disabled = (idx >= caseTabs.length - 1);
     }
     if (prevBtn) prevBtn.addEventListener("click", function () {
+      pauseAllVideos();
       var i = Math.max(0, (currentIdx || 0) - 1);
       caseTrack.children[i] && caseTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
     });
     if (nextBtn) nextBtn.addEventListener("click", function () {
+      pauseAllVideos();
       var i = Math.min(caseTabs.length - 1, (currentIdx || 0) + 1);
       caseTrack.children[i] && caseTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
     });
@@ -228,6 +248,7 @@
     caseTrack.addEventListener("scroll", function () {
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(function () {
+        pauseAllVideos();
         var w = caseTrack.clientWidth;
         currentIdx = Math.round(caseTrack.scrollLeft / Math.max(w, 1));
         caseTabs.forEach(function (t, i) {
@@ -247,6 +268,7 @@
   if (productTrack && productTabs.length) {
     productTabs.forEach(function (tab, i) {
       tab.addEventListener("click", function () {
+        pauseAllVideos();
         var slide = productTrack.children[i];
         if (slide && slide.scrollIntoView) {
           slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
@@ -261,10 +283,12 @@
       if (pNextBtn) pNextBtn.disabled = (idx >= productTabs.length - 1);
     }
     if (pPrevBtn) pPrevBtn.addEventListener("click", function () {
+      pauseAllVideos();
       var i = Math.max(0, pCurrent - 1);
       productTrack.children[i] && productTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
     });
     if (pNextBtn) pNextBtn.addEventListener("click", function () {
+      pauseAllVideos();
       var i = Math.min(productTabs.length - 1, pCurrent + 1);
       productTrack.children[i] && productTrack.children[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
     });
@@ -272,6 +296,7 @@
     productTrack.addEventListener("scroll", function () {
       clearTimeout(pScrollTimer);
       pScrollTimer = setTimeout(function () {
+        pauseAllVideos();
         var w = productTrack.clientWidth;
         pCurrent = Math.round(productTrack.scrollLeft / Math.max(w, 1));
         productTabs.forEach(function (t, i) {
