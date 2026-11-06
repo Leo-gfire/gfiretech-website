@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="SSD drive placeholder - replace with authorized product photo">
+  <rect width="800" height="600" fill="#f5f6f8"/>
+  <rect x="210" y="235" width="380" height="130" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <rect x="232" y="256" width="336" height="20" rx="5" fill="#dfe3e8"/>
+  <rect x="232" y="288" width="200" height="14" rx="4" fill="#e5e7eb"/>
+  <circle cx="540" cy="300" r="16" fill="#cfd4da"/>
+  <g fill="#cfd4da">
+    <rect x="250" y="324" width="22" height="22" rx="3"/>
+    <rect x="284" y="324" width="22" height="22" rx="3"/>
+    <rect x="318" y="324" width="22" height="22" rx="3"/>
+  </g>
+  <text x="400" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#9aa3af">SSD / Storage Drive</text>
+  <text x="400" y="466" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b6bcc4">Replace with authorized product / packaging photo</text>
+</svg>

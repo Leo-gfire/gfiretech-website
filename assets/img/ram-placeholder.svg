@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Memory module placeholder - replace with authorized product photo">
+  <rect width="800" height="600" fill="#f5f6f8"/>
+  <rect x="220" y="210" width="360" height="180" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <rect x="240" y="230" width="320" height="34" rx="6" fill="#dfe3e8"/>
+  <g fill="#cfd4da">
+    <rect x="250" y="286" width="26" height="70" rx="3"/>
+    <rect x="292" y="286" width="26" height="70" rx="3"/>
+    <rect x="334" y="286" width="26" height="70" rx="3"/>
+    <rect x="376" y="286" width="26" height="70" rx="3"/>
+    <rect x="418" y="286" width="26" height="70" rx="3"/>
+    <rect x="460" y="286" width="26" height="70" rx="3"/>
+    <rect x="502" y="286" width="26" height="70" rx="3"/>
+  </g>
+  <rect x="250" y="372" width="320" height="10" rx="5" fill="#e5e7eb"/>
+  <text x="400" y="450" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#9aa3af">Memory Module</text>
+  <text x="400" y="486" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b6bcc4">Replace with authorized product / packaging photo</text>
+</svg>

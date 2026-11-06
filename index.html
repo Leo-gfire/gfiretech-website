@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GFIRE TECH – Your Product Team in China</title>
-  <meta name="description" content="GFIRE TECH, led by Leo Huang in Shenzhen, helps overseas businesses source, verify and develop products through a trusted network of Chinese manufacturers. China Sourcing, Supplier Verification, OEM/ODM and procurement support." />
-  <meta name="keywords" content="China sourcing, product development, supplier verification, OEM ODM, procurement support, Shenzhen sourcing agent, China manufacturing partner" />
+  <meta name="description" content="GFIRE TECH, led by Leo Huang in Shenzhen, helps overseas businesses source, verify, develop and supply products in China — from product development and supplier verification to computer & server hardware (RAM, SSD, enterprise storage). China Sourcing, Supplier Verification, OEM/ODM, Procurement Support and B2B hardware supply." />
+  <meta name="keywords" content="China sourcing, product development, supplier verification, OEM ODM, procurement support, Shenzhen sourcing agent, China manufacturing partner, RAM supplier China, DDR4 DDR5 memory modules, SSD supplier China, enterprise SSD, server storage, computer hardware supply" />
   <meta name="author" content="GFIRE TECH" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.gfiretech.com/" />
@@ -26,6 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/i18n.css" />
 
   <!-- SEO 结构化数据（JSON-LD）：帮助搜索引擎理解站点身份与站内搜索入口 -->
   <script type="application/ld+json">
@@ -77,15 +78,22 @@
       </button>
 
       <nav class="primary-nav" id="primaryNav" aria-label="Primary">
-        <a href="#why-problem">Why Us</a>
-        <a href="/services/">Services</a>
-        <a href="/supplier-verification/">Supplier Verification</a>
-        <a href="#products">Products</a>
-        <a href="#how">How We Work</a>
-        <a href="#leo">Meet Leo</a>
-        <a href="#cases">Case Studies</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="nav-cta">Start a Sourcing Project</a>
+        <a href="#why-problem" data-i18n="nav_why">Why Us</a>
+        <a href="/services/" data-i18n="nav_services">Services</a>
+        <a href="/supplier-verification/" data-i18n="nav_verify">Supplier Verification</a>
+        <a href="#products" data-i18n="nav_products">Products</a>
+        <a href="/ram-memory-modules/" data-i18n="nav_ram">RAM &amp; Memory</a>
+        <a href="/ssd-server-storage/" data-i18n="nav_ssd">SSD &amp; Storage</a>
+        <a href="#how" data-i18n="nav_how">How We Work</a>
+        <a href="#leo" data-i18n="nav_leo">Meet Leo</a>
+        <a href="#cases" data-i18n="nav_cases">Case Studies</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#contact" class="nav-cta" data-i18n="nav_cta">Start a Sourcing Project</a>
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true" onclick="GT_I18N.setLang('en')">EN</button>
+          <span class="lang-sep"></span>
+          <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false" onclick="GT_I18N.setLang('ru')">RU</button>
+        </div>
       </nav>
     </div>
   </header>
@@ -95,21 +103,22 @@
     <section class="hero" aria-labelledby="heroTitle">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">China Sourcing &amp; Product Development Partner</p>
+          <p class="eyebrow" data-i18n="hero_eyebrow">China Product Sourcing &amp; B2B Supply Partner</p>
           <h1 id="heroTitle">Your Product Team in China</h1>
-          <p class="lead">
-            We help overseas brands, distributors and importers source, develop and manufacture
-            products in China — without needing their own team on the ground.
+          <p class="lead" data-i18n="hero_lead">
+            We help overseas brands, distributors and importers source, develop and supply
+            products in China — from product development and factory verification to computer &amp;
+            server hardware supply, without needing their own team on the ground.
           </p>
-          <p class="hero-tags">Sourcing&nbsp;·&nbsp;Supplier Verification&nbsp;·&nbsp;OEM/ODM&nbsp;·&nbsp;Procurement Support</p>
+          <p class="hero-tags" data-i18n="hero_tags">Sourcing&nbsp;·&nbsp;Supplier Verification&nbsp;·&nbsp;OEM/ODM&nbsp;·&nbsp;Procurement Support</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Start a Sourcing Project</a>
-            <a href="#contact?service=verify-supplier" class="btn btn-ghost">Verify a Supplier</a>
+            <a href="#contact" class="btn btn-primary" data-i18n="cta_start">Start a Sourcing Project</a>
+            <a href="#contact?service=verify-supplier" class="btn btn-ghost" data-i18n="cta_verify">Verify a Supplier</a>
           </div>
           <ul class="hero-stats">
-            <li><strong>Shenzhen, China</strong><span>At the heart of China's manufacturing ecosystem</span></li>
-            <li><strong>Multi-category</strong><span>Climate · Auto · Smart Family</span></li>
-            <li><strong>China-based</strong><span>On-the-ground supplier access</span></li>
+            <li><strong data-i18n="hero_stat1_strong">Shenzhen, China</strong><span data-i18n="hero_stat1_span">At the heart of China's manufacturing ecosystem</span></li>
+            <li><strong data-i18n="hero_stat2_strong">Two business lines</strong><span data-i18n="hero_stat2_span">Product development &amp; Computer hardware supply</span></li>
+            <li><strong data-i18n="hero_stat3_strong">China-based</strong><span data-i18n="hero_stat3_span">On-the-ground supplier access</span></li>
           </ul>
         </div>
 
@@ -126,18 +135,18 @@
     <!-- ============ 信任凭证条（轻量视觉刷新） ============ -->
     <section class="trust-strip" aria-label="Why buyers trust GFIRE TECH">
       <div class="container trust-strip-inner">
-        <span>On-the-ground in Shenzhen</span>
-        <span>20+ yrs product development</span>
-        <span>Independent supplier verification</span>
-        <span>CE / RoHS reviewed, not assumed</span>
+        <span data-i18n="trust1">On-the-ground in Shenzhen</span>
+        <span data-i18n="trust2">20+ yrs product development</span>
+        <span data-i18n="trust3">Independent supplier verification</span>
+        <span data-i18n="trust4">CE / RoHS reviewed, not assumed</span>
       </div>
     </section>
 
     <!-- ============ SECTION 02 — 你到底解决什么问题 ============ -->
     <section class="section section-dark" id="why-problem" aria-labelledby="problemTitle">
       <div class="container">
-        <h2 id="problemTitle" class="section-title light">Finding the Right Supplier in China Shouldn't Be a Gamble.</h2>
-        <p class="section-sub light">Most overseas buyers lose time and money not on the product, but on the supply chain around it.</p>
+        <h2 id="problemTitle" class="section-title light" data-i18n="t_why">Finding the Right Supplier in China Shouldn't Be a Gamble.</h2>
+        <p class="section-sub light" data-i18n="s_why">Most overseas buyers lose time and money not on the product, but on the supply chain around it.</p>
         <div class="problem-grid">
           <div class="problem-item">
             <span class="problem-no">01</span>
@@ -162,29 +171,29 @@
     <!-- ============ SECTION 03 — 核心能力 What We Do ============ -->
     <section class="section" id="services" aria-labelledby="servicesTitle">
       <div class="container">
-        <h2 id="servicesTitle" class="section-title">What We Do</h2>
-        <p class="section-sub">Four core capabilities that turn your requirement into a reliable supply chain.</p>
+        <h2 id="servicesTitle" class="section-title" data-i18n="t_services">What We Do</h2>
+        <p class="section-sub" data-i18n="s_services">Four core capabilities that turn your requirement into a reliable supply chain.</p>
 
         <div class="service-grid">
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">01</div>
-            <h3>China Sourcing</h3>
-            <p>Find suitable suppliers based on your product requirements, target cost and specifications.</p>
+            <h3 data-i18n="sv1_t">China Sourcing</h3>
+            <p data-i18n="sv1_p">Find suitable suppliers based on your product requirements, target cost and specifications.</p>
           </article>
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">02</div>
-            <h3>Supplier Verification</h3>
-            <p>Evaluate supplier capabilities, product specifications, certifications and manufacturing suitability.</p>
+            <h3 data-i18n="sv2_t">Supplier Verification</h3>
+            <p data-i18n="sv2_p">Evaluate supplier capabilities, product specifications, certifications and manufacturing suitability.</p>
           </article>
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">03</div>
-            <h3>OEM &amp; ODM</h3>
-            <p>Support product customization, specification development, packaging and manufacturing coordination.</p>
+            <h3 data-i18n="sv3_t">OEM &amp; ODM</h3>
+            <p data-i18n="sv3_p">Support product customization, specification development, packaging and manufacturing coordination.</p>
           </article>
           <article class="service-card">
             <div class="service-icon" aria-hidden="true">04</div>
-            <h3>Procurement Support</h3>
-            <p>Coordinate quotations, samples, production follow-up, quality control and delivery.</p>
+            <h3 data-i18n="sv4_t">Procurement Support</h3>
+            <p data-i18n="sv4_p">Coordinate quotations, samples, production follow-up, quality control and delivery.</p>
           </article>
         </div>
       </div>
@@ -197,8 +206,8 @@
           <img class="leo-avatar" src="assets/img/leo.png" alt="Leo Huang, founder of GFIRE TECH" width="220" height="220" loading="lazy" />
         </div>
         <div class="leo-copy">
-          <p class="eyebrow">Meet Your China Product Partner</p>
-          <h2 id="leoTitle" class="section-title">Leo Huang</h2>
+          <p class="eyebrow" data-i18n="s_leo">Meet Your China Product Partner</p>
+          <h2 id="leoTitle" class="section-title" data-i18n="t_leo">Leo Huang</h2>
           <p class="leo-role">Product Development &amp; China Sourcing</p>
           <p class="lead">
             With 20+ years of experience in product development, sourcing and manufacturing coordination in China, Leo helps
@@ -217,8 +226,8 @@
     <!-- ============ SECTION 05 — Products ============ -->
     <section class="section" id="products" aria-labelledby="productsTitle">
       <div class="container">
-        <h2 id="productsTitle" class="section-title">Products We Can Source &amp; Develop</h2>
-        <p class="section-sub">Selected examples of product categories we can source, develop and procure through our China supplier network.</p>
+        <h2 id="productsTitle" class="section-title" data-i18n="t_products">Products We Can Source &amp; Develop</h2>
+        <p class="section-sub" data-i18n="s_products">Selected examples of product categories we can source, develop and procure through our China supplier network.</p>
 
         <div class="product-carousel">
           <button type="button" class="product-arrow product-arrow-prev" aria-label="Previous product" disabled>
@@ -363,22 +372,53 @@
           </div>
         </div>
 
-        <p class="more-cats">More categories we can source &amp; develop: Heaters · Heated Blankets · Fans · Lighting · Pet Electronics · Consumer Electronics.</p>
+        <p class="more-cats" data-i18n="more_cats">More categories we can source &amp; develop: Heaters · Heated Blankets · Fans · Lighting · Pet Electronics · Consumer Electronics.</p>
 
         <!-- 产品区收尾 CTA（网站优化意见822：Products 下方增加） -->
         <div class="product-cta">
-          <h3 class="product-cta-title">Don't see your product?</h3>
-          <p class="product-cta-text">Tell us what you are looking for. We can help you identify suitable suppliers in China.</p>
-          <a href="#contact" class="btn btn-primary">Tell Us Your Requirement</a>
+          <h3 class="product-cta-title" data-i18n="product_cta_t">Don't see your product?</h3>
+          <p class="product-cta-text" data-i18n="product_cta_text">Tell us what you are looking for. We can help you identify suitable suppliers in China.</p>
+          <a href="#contact" class="btn btn-primary" data-i18n="cta_tellyour">Tell Us Your Requirement</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION — China Supply Advantage (NEW) ============ -->
+    <section class="section section-alt" id="supply" aria-labelledby="supplyTitle">
+      <div class="container">
+        <h2 id="supplyTitle" class="section-title" data-i18n="t_supply">Flexible Sourcing &amp; Supply Options from China</h2>
+        <p class="section-sub" data-i18n="s_supply">GFIRE TECH supports international B2B buyers through different sourcing and supply channels.</p>
+        <div class="advantage-grid">
+          <div class="advantage-card">
+            <div class="advantage-no">01</div>
+            <h3 data-i18n="adv1_t">Shenzhen Stock Resources</h3>
+            <p data-i18n="adv1_p">Access to available products through our Shenzhen supply network.</p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-no">02</div>
+            <h3 data-i18n="adv2_t">Hong Kong Supply Channels</h3>
+            <p data-i18n="adv2_p">Flexible sourcing and delivery arrangements through Hong Kong, subject to the agreed transaction and logistics arrangements.</p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-no">03</div>
+            <h3 data-i18n="adv3_t">Chinese Supplier Network</h3>
+            <p data-i18n="adv3_p">Additional sourcing support for different brands, specifications and quantities through qualified suppliers in China.</p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-no">04</div>
+            <h3 data-i18n="adv4_t">Product Verification</h3>
+            <p data-i18n="adv4_p">Model, specification, condition, packaging and available quantity can be checked before order confirmation.</p>
+          </div>
+        </div>
+        <p class="cat-note" data-i18n="supply_note">We do not promise that every model is always in stock. Availability, condition and quantity are confirmed per inquiry.</p>
       </div>
     </section>
 
     <!-- ============ SECTION 06 — 产品开发流程 ============ -->
     <section class="section section-alt" id="how" aria-labelledby="howTitle">
       <div class="container">
-        <h2 id="howTitle" class="section-title">From Requirement to Production</h2>
-        <p class="section-sub">A clear, managed path — so you don't have to coordinate dozens of suppliers yourself.</p>
+        <h2 id="howTitle" class="section-title" data-i18n="t_how">From Requirement to Production</h2>
+        <p class="section-sub" data-i18n="s_how">A clear, managed path — so you don't have to coordinate dozens of suppliers yourself.</p>
 
         <ol class="process-flow">
           <li><span class="step-no">01</span><h3>Understand</h3><p>Understand your product requirements, target market and cost expectations.</p></li>
@@ -393,8 +433,8 @@
     <!-- ============ SECTION 07 — Case Studies ============ -->
     <section class="section" id="cases" aria-labelledby="casesTitle">
       <div class="container">
-        <h2 id="casesTitle" class="section-title">Selected Product Development Cases</h2>
-        <p class="section-sub">How we turn a requirement into a sourced, developed product.</p>
+        <h2 id="casesTitle" class="section-title" data-i18n="t_cases">Selected Product Development Cases</h2>
+        <p class="section-sub" data-i18n="s_cases">How we turn a requirement into a sourced, developed product.</p>
 
         <div class="case-carousel">
           <button type="button" class="case-arrow case-arrow-prev" aria-label="Previous case" disabled>
@@ -533,8 +573,8 @@
     <!-- ============ SECTION 08 — Supplier Verification ============ -->
     <section class="section section-alt" id="verify" aria-labelledby="verifyTitle">
       <div class="container">
-        <h2 id="verifyTitle" class="section-title">Supplier Verification</h2>
-        <p class="section-sub">Know who you are buying from before you place an order.</p>
+        <h2 id="verifyTitle" class="section-title" data-i18n="t_verify">Supplier Verification</h2>
+        <p class="section-sub" data-i18n="s_verify">Know who you are buying from before you place an order.</p>
         <div class="detail-grid">
           <div class="detail-card">
             <h3>Company Verification</h3>
@@ -590,7 +630,7 @@
         <div class="verify-cta">
           <h3 class="verify-cta-title">Already Found a Supplier in China?</h3>
           <p class="verify-cta-text">Before placing an order, let us help you assess the supplier's capability, product experience and commercial conditions.</p>
-          <a href="#contact?service=verify-supplier" class="btn btn-primary">Request Supplier Verification</a>
+          <a href="#contact?service=verify-supplier" class="btn btn-primary" data-i18n="cta_verify">Request Supplier Verification</a>
         </div>
       </div>
     </section>
@@ -598,8 +638,8 @@
     <!-- ============ SECTION 09 — OEM & ODM ============ -->
     <section class="section" id="oem" aria-labelledby="oemTitle">
       <div class="container">
-        <h2 id="oemTitle" class="section-title">From Existing Products to Customized Solutions</h2>
-        <p class="section-sub">Take a proven product and make it yours — or build something new.</p>
+        <h2 id="oemTitle" class="section-title" data-i18n="t_oem">From Existing Products to Customized Solutions</h2>
+        <p class="section-sub" data-i18n="s_oem">Take a proven product and make it yours — or build something new.</p>
         <ol class="oem-flow">
           <li><span class="step-no">1</span><h3>Existing Product</h3></li>
           <li><span class="step-no">2</span><h3>Specification Modification</h3></li>
@@ -615,8 +655,8 @@
     <!-- ============ SECTION 10 — Procurement Support ============ -->
     <section class="section section-alt" id="procure" aria-labelledby="procureTitle">
       <div class="container">
-        <h2 id="procureTitle" class="section-title">Procurement Support in China</h2>
-        <p class="section-sub">One Point of Contact in China.</p>
+        <h2 id="procureTitle" class="section-title" data-i18n="t_procure">Procurement Support in China</h2>
+        <p class="section-sub" data-i18n="s_procure">One Point of Contact in China.</p>
         <div class="detail-grid">
           <div class="detail-card"><h3>RFQ &amp; Quotation Comparison</h3><p>Apples-to-apples quotes across matched suppliers.</p></div>
           <div class="detail-card"><h3>Supplier Communication</h3><p>Clear, documented follow-up in your timezone.</p></div>
@@ -634,7 +674,7 @@
     <section class="section" id="about" aria-labelledby="aboutTitle">
       <div class="container about-grid">
         <div class="about-copy">
-          <h2 id="aboutTitle" class="section-title">About GFIRE TECH</h2>
+          <h2 id="aboutTitle" class="section-title" data-i18n="t_about">About GFIRE TECH</h2>
           <p>
             GFIRE TECH is a China-based sourcing and product development company helping overseas businesses connect with
             reliable manufacturing resources in China.
@@ -671,8 +711,8 @@
     <section class="section section-alt" id="cases" aria-labelledby="casesTitle">
       <div class="container">
         <p class="eyebrow">Selected Work</p>
-        <h2 id="casesTitle" class="section-title">How We Help Clients Source in China</h2>
-        <p class="section-sub">A few representative engagements. Names withheld; details shared under NDA on request.</p>
+        <h2 id="casesTitle" class="section-title" data-i18n="t_about2">How We Help Clients Source in China</h2>
+        <p class="section-sub" data-i18n="s_about2">A few representative engagements. Names withheld; details shared under NDA on request.</p>
 
         <div class="case-grid">
           <article class="case-card">
@@ -703,8 +743,8 @@
     <!-- ============ SECTION 12 — Why Work With Us ============ -->
     <section class="section section-alt" id="why" aria-labelledby="whyTitle">
       <div class="container">
-        <h2 id="whyTitle" class="section-title">Why Work With GFIRE TECH?</h2>
-        <p class="section-sub">You don't need another supplier list. You need the right supplier, the right product and someone on the ground in China to help manage the process.</p>
+        <h2 id="whyTitle" class="section-title" data-i18n="t_whyus">Why Work With GFIRE TECH?</h2>
+        <p class="section-sub" data-i18n="s_whyus">You don't need another supplier list. You need the right supplier, the right product and someone on the ground in China to help manage the process.</p>
 
         <div class="feature-grid">
           <div class="feature">
@@ -734,8 +774,8 @@
     <!-- ============ 中间获客入口（网站优化意见822：页面中间CTA） ============ -->
     <section class="section section-mid-cta" aria-labelledby="midCtaTitle">
       <div class="container mid-cta-inner">
-        <h2 id="midCtaTitle">Have a product requirement?</h2>
-        <p>Send us your product, specifications, target quantity and market. We'll review your request and advise on the next step.</p>
+        <h2 id="midCtaTitle" data-i18n="t_midcta">Have a product requirement?</h2>
+        <p data-i18n="s_midcta">Send us your product, specifications, target quantity and market. We'll review your request and advise on the next step.</p>
         <a href="#contact" class="btn btn-primary btn-lg">Send Your Requirement</a>
       </div>
     </section>
@@ -743,8 +783,8 @@
     <!-- ============ SECTION 13 — CTA ============ -->
     <section class="section section-dark cta-block" aria-labelledby="ctaTitle">
       <div class="container cta-inner">
-        <h2 id="ctaTitle">Looking for a Reliable China Sourcing Partner?</h2>
-        <p>Whether you need to find a supplier, verify an existing supplier, develop a new product or manage procurement in China, let's discuss your project.</p>
+        <h2 id="ctaTitle" data-i18n="t_cta">Looking for a Reliable China Sourcing Partner?</h2>
+        <p data-i18n="s_cta">Whether you need to find a supplier, verify an existing supplier, develop a new product or manage procurement in China, let's discuss your project.</p>
         <div class="cta-actions">
           <a href="#contact" class="btn btn-primary btn-lg">Start a Sourcing Project</a>
           <a href="#contact?service=verify-supplier" class="btn btn-ghost btn-lg">Verify a Supplier</a>
@@ -756,26 +796,26 @@
     <section class="section" id="contact" aria-labelledby="contactTitle">
       <div class="container contact-grid">
         <div class="contact-intro">
-          <h2 class="section-title">Let's Discuss Your Project</h2>
-          <p class="section-sub">Whether you are looking for a supplier, need to verify an existing factory, or want to develop a new product, we can help you take the next step in China.</p>
+          <h2 class="section-title" data-i18n="t_contact">Let's Discuss Your Project</h2>
+          <p class="section-sub" data-i18n="s_contact">Whether you are looking for a supplier, need to verify an existing factory, or want to develop a new product, we can help you take the next step in China.</p>
 
           <div class="why-list">
             <div class="why-item">
-              <h3>Find the Right Supplier</h3>
-              <p>We identify suitable suppliers based on your product requirements, target market and purchasing needs.</p>
+              <h3 data-i18n="contact_find_t">Find the Right Supplier</h3>
+              <p data-i18n="contact_find_p">We identify suitable suppliers based on your product requirements, target market and purchasing needs.</p>
             </div>
             <div class="why-item">
-              <h3>Verify Before You Buy</h3>
-              <p>We help assess supplier capability, product experience, certifications and commercial conditions.</p>
+              <h3 data-i18n="contact_verify_t">Verify Before You Buy</h3>
+              <p data-i18n="contact_verify_p">We help assess supplier capability, product experience, certifications and commercial conditions.</p>
             </div>
             <div class="why-item">
-              <h3>Develop &amp; Procure</h3>
-              <p>From samples and OEM/ODM to production follow-up, we provide practical support on the ground in China.</p>
+              <h3 data-i18n="contact_dev_t">Develop &amp; Procure</h3>
+              <p data-i18n="contact_dev_p">From samples and OEM/ODM to production follow-up, we provide practical support on the ground in China.</p>
             </div>
           </div>
 
           <div class="next-steps">
-            <h3>What Happens Next?</h3>
+            <h3 data-i18n="contact_next_t">What Happens Next?</h3>
             <ol class="steps">
               <li><span class="step-no">01</span><div><strong>We Review Your Request</strong><p>We review your product or project requirements.</p></div></li>
               <li><span class="step-no">02</span><div><strong>We Discuss the Best Approach</strong><p>We clarify your needs and recommend the most practical next step.</p></div></li>
@@ -784,7 +824,7 @@
           </div>
 
           <div class="contact-direct">
-            <p class="direct-label">Prefer Email or WhatsApp?</p>
+            <p class="direct-label" data-i18n="contact_preflabel">Prefer Email or WhatsApp?</p>
             <p class="direct-email"><a href="mailto:Leo@gfiretech.com">Leo@gfiretech.com</a></p>
             <p class="direct-wa">WhatsApp: <a href="https://wa.me/8619566351393" target="_blank" rel="noopener">+86 195 6635 1393</a></p>
           </div>
@@ -793,82 +833,82 @@
         <!-- 表单：提交到 Formspree（ID xyegodab），询盘邮件转发到 Leo@gfiretech.com -->
         <form class="quote-form" id="quoteForm"
               action="https://formspree.io/f/xyegodab" method="POST" novalidate>
-          <p class="form-privacy">Your information is used only to respond to your inquiry. We never share it with third parties.</p>
+          <p class="form-privacy" data-i18n="form_privacy">Your information is used only to respond to your inquiry. We never share it with third parties.</p>
           <div class="field">
-            <label for="name">Full Name *</label>
+            <label for="name" data-i18n="form_name">Full Name *</label>
             <input type="text" id="name" name="name" autocomplete="name" required />
           </div>
           <div class="field">
-            <label for="company">Company</label>
+            <label for="company" data-i18n="form_company">Company</label>
             <input type="text" id="company" name="company" autocomplete="organization" />
           </div>
           <div class="field">
-            <label for="country">Country</label>
+            <label for="country" data-i18n="form_country">Country</label>
             <input type="text" id="country" name="country" autocomplete="country-name" placeholder="e.g. USA / Germany" />
           </div>
           <div class="field">
-            <label for="email">Work Email *</label>
+            <label for="email" data-i18n="form_email">Work Email *</label>
             <input type="email" id="email" name="email" autocomplete="email" required />
           </div>
           <div class="field">
-            <label for="whatsapp">WhatsApp</label>
+            <label for="whatsapp" data-i18n="form_whatsapp">WhatsApp</label>
             <input type="text" id="whatsapp" name="whatsapp" placeholder="+86 / +1 ..." />
           </div>
 
           <div class="field field-full">
-            <label class="field-label-strong">What can we help you with? *</label>
+            <label class="field-label-strong" data-i18n="form_helptype_label">What can we help you with? *</label>
             <div class="radio-group" id="helptype" role="radiogroup" aria-label="What can we help you with?">
-              <label class="radio-item"><input type="radio" name="helptype" value="Find a Supplier" required /> Find a Supplier</label>
-              <label class="radio-item"><input type="radio" name="helptype" value="Verify a Supplier" /> Verify a Supplier</label>
-              <label class="radio-item"><input type="radio" name="helptype" value="Product Development" /> Product Development</label>
-              <label class="radio-item"><input type="radio" name="helptype" value="OEM / ODM" /> OEM / ODM</label>
-              <label class="radio-item"><input type="radio" name="helptype" value="Procurement Support" /> Procurement Support</label>
-              <label class="radio-item"><input type="radio" name="helptype" value="Other" /> Other</label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Find a Supplier" required /> <span data-i18n="form_helptype_find">Find a Supplier</span></label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Verify a Supplier" /> <span data-i18n="form_helptype_verify">Verify a Supplier</span></label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Product Development" /> <span data-i18n="form_helptype_dev">Product Development</span></label>
+              <label class="radio-item"><input type="radio" name="helptype" value="OEM / ODM" /> <span data-i18n="form_helptype_odm">OEM / ODM</span></label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Procurement Support" /> <span data-i18n="form_helptype_procure">Procurement Support</span></label>
+              <label class="radio-item"><input type="radio" name="helptype" value="Other" /> <span data-i18n="form_helptype_other">Other</span></label>
             </div>
           </div>
           <div class="field field-full conditional" id="supplierInfoField">
-            <label for="supplier_info">Supplier to verify</label>
+            <label for="supplier_info" data-i18n="form_supplierinfo">Supplier to verify</label>
             <textarea id="supplier_info" name="supplier_info" rows="3" placeholder="Supplier name, website, location, and the product they offer"></textarea>
           </div>
 
           <div class="field smart-field" data-show="find,develop,odm,procure,other" id="productField">
-            <label for="product">Product / Project (Optional)</label>
+            <label for="product" data-i18n="form_product">Product / Project (Optional)</label>
             <input type="text" id="product" name="product" placeholder="What are you looking for?" />
           </div>
           <div class="field smart-field" data-show="find,develop,odm,procure,other" id="quantityField">
-            <label for="quantity">Estimated Quantity (Optional)</label>
+            <label for="quantity" data-i18n="form_qty">Estimated Quantity (Optional)</label>
             <input type="text" id="quantity" name="quantity" placeholder="e.g. 500 pcs" />
-            <p class="field-hint">An estimate is enough if the exact quantity is not yet known.</p>
+            <p class="field-hint" data-i18n="form_hint_qty">An estimate is enough if the exact quantity is not yet known.</p>
           </div>
           <div class="field smart-field" data-show="find,develop,odm,procure,other" id="marketField">
-            <label for="destination">Target Market (Optional)</label>
+            <label for="destination" data-i18n="form_market">Target Market (Optional)</label>
             <input type="text" id="destination" name="destination" placeholder="e.g. USA / EU" />
           </div>
           <div class="field smart-field" data-show="find,develop,odm,procure,other" id="priceField">
-            <label for="targetprice">Target Price (Optional)</label>
+            <label for="targetprice" data-i18n="form_price">Target Price (Optional)</label>
             <input type="text" id="targetprice" name="targetprice" placeholder="e.g. FOB $XX" />
           </div>
           <div class="field smart-field" data-show="odm" id="odmField">
-            <label for="odm">OEM / ODM Required? (Optional)</label>
+            <label for="odm" data-i18n="form_odm_label">OEM / ODM Required? (Optional)</label>
             <select id="odm" name="odm">
-              <option value="">Select…</option>
-              <option>Yes</option>
-              <option>No</option>
-              <option>Not Sure</option>
+              <option value="" data-i18n="form_odm_select">Select…</option>
+              <option data-i18n="form_odm_yes">Yes</option>
+              <option data-i18n="form_odm_no">No</option>
+              <option data-i18n="form_odm_ns">Not Sure</option>
             </select>
           </div>
           <div class="field field-full">
-            <label for="message">Message *</label>
+            <label for="message" data-i18n="form_message">Message *</label>
             <textarea id="message" name="message" rows="4" required placeholder="Describe your requirement briefly..."></textarea>
-            <p class="field-hint">Tell us briefly what you are looking for. If you don't have all the details yet, that's OK.</p>
+            <p class="field-hint" data-i18n="form_hint">Tell us briefly what you are looking for. If you don't have all the details yet, that's OK.</p>
           </div>
           <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <input type="hidden" name="_subject" value="New RFQ from GFIRE TECH.com" />
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          <button type="submit" class="btn btn-primary btn-block">Send Your Requirement</button>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="form_submit">Send Your Requirement</button>
           <p class="copy-email-line">
             No mail app? Copy our email:
-            <button type="button" class="btn-link" id="copyEmailBtn" data-email="Leo@gfiretech.com">Copy Leo@gfiretech.com</button>
+            <button type="button" class="btn-link" id="copyEmailBtn" data-email="Leo@gfiretech.com" data-i18n="form_copybtn">Copy Leo@gfiretech.com</button>
             <span class="copy-hint" id="copyHint"></span>
           </p>
         </form>
@@ -882,7 +922,7 @@
       <div>
         <span class="brand-mark">GT</span>
         <p class="footer-brand">GFIRE TECH CO., LTD.</p>
-        <p class="footer-note">China Sourcing · Supplier Verification · OEM / ODM · Procurement Support</p>
+        <p class="footer-note" data-i18n="footer_note">China Sourcing · Supplier Verification · OEM / ODM · Procurement Support</p>
       </div>
       <div class="footer-person">
         <p class="footer-person-name">Leo Huang</p>
@@ -894,30 +934,31 @@
         </div>
       </div>
       <nav class="footer-nav" aria-label="Footer">
-        <h4 class="footer-col-title">Quick Links</h4>
-        <a href="/services/">Services</a>
-        <a href="#products">Products</a>
-        <a href="#how">How We Work</a>
-        <a href="#cases">Case Studies</a>
-        <a href="#about">About</a>
-        <a href="#leo">Meet Leo</a>
-        <a href="#contact">Contact</a>
+        <h4 class="footer-col-title" data-i18n="footer_quicklinks">Quick Links</h4>
+        <a href="/services/" data-i18n="nav_services">Services</a>
+        <a href="#products" data-i18n="nav_products">Products</a>
+        <a href="#how" data-i18n="nav_how">How We Work</a>
+        <a href="#cases" data-i18n="nav_cases">Case Studies</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#leo" data-i18n="nav_leo">Meet Leo</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
       </nav>
       <div class="footer-contact">
-        <h4 class="footer-col-title">Get in Touch</h4>
+        <h4 class="footer-col-title" data-i18n="footer_getintouch">Get in Touch</h4>
         <ul class="footer-contact-list">
-          <li><span>WhatsApp</span><a href="tel:+8619566351393">+86 195 6635 1393</a></li>
-          <li><span>Email</span><a href="mailto:Leo@gfiretech.com">Leo@gfiretech.com</a></li>
-          <li><span>Business Location</span>Shenzhen, Guangdong, China</li>
+          <li><span data-i18n="footer_whatsapp">WhatsApp</span><a href="tel:+8619566351393">+86 195 6635 1393</a></li>
+          <li><span data-i18n="footer_email">Email</span><a href="mailto:Leo@gfiretech.com">Leo@gfiretech.com</a></li>
+          <li><span data-i18n="footer_location">Business Location</span>Shenzhen, Guangdong, China</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 GFIRE TECH CO., LTD. — China Sourcing &amp; Product Development. All rights reserved.</p>
-      <p class="footer-privacy">We use privacy-friendly analytics (Google Analytics) to understand site traffic. No personal data is sold or shared.</p>
+      <p data-i18n="footer_rights">© 2026 GFIRE TECH CO., LTD. — China Sourcing &amp; Product Development. All rights reserved.</p>
+      <p class="footer-privacy" data-i18n="footer_privacy">We use privacy-friendly analytics (Google Analytics) to understand site traffic. No personal data is sold or shared.</p>
     </div>
   </footer>
 
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

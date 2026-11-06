@@ -4,7 +4,7 @@
     <loc>https://www.gfiretech.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-11-06</lastmod>
   </url>
   <url>
     <loc>https://www.gfiretech.com/supplier-verification/</loc>
@@ -17,5 +17,17 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gfiretech.com/ram-memory-modules/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-11-06</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gfiretech.com/ssd-server-storage/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-11-06</lastmod>
   </url>
 </urlset>

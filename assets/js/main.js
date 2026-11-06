@@ -199,6 +199,17 @@
     var checked = form && form.querySelector('input[name="helptype"]:checked');
     return checked ? checked.value : "";
   }
+  // i18n-aware status message lookup (reads GFIRE TECH language dictionary)
+  function i18nMsg(key) {
+    try {
+      var lang = (window.GT_I18N && window.GT_I18N.getLang) ? window.GT_I18N.getLang() : "en";
+      var d = (window.GT_I18N && window.GT_I18N.dict) ? window.GT_I18N.dict : null;
+      if (d && d[lang] && d[lang][key] !== undefined) return d[lang][key];
+      if (d && d.en && d.en[key] !== undefined) return d.en[key];
+    } catch (e) {}
+    return "";
+  }
+
   if (form && status) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -213,17 +224,17 @@
       var message = form.querySelector("#message");
       var supplierInfo = form.querySelector("#supplier_info");
       if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
-        status.textContent = "Please fill in Name, Email and Message.";
+        status.textContent = i18nMsg("form_status_fill");
         status.className = "form-status err";
         return;
       }
       if (!getHelpTypeValue()) {
-        status.textContent = "Please select what you need help with.";
+        status.textContent = i18nMsg("form_status_select");
         status.className = "form-status err";
         return;
       }
       if (getHelpTypeValue() === "Verify a Supplier" && (!supplierInfo || !supplierInfo.value.trim())) {
-        status.textContent = "Please provide the supplier information you want us to verify.";
+        status.textContent = i18nMsg("form_status_supplier");
         status.className = "form-status err";
         if (supplierInfo) supplierInfo.focus();
         return;
@@ -231,12 +242,12 @@
       // 邮箱格式
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
       if (!emailOk) {
-        status.textContent = "Please enter a valid work email.";
+        status.textContent = i18nMsg("form_status_email");
         status.className = "form-status err";
         return;
       }
 
-      status.textContent = "Sending…";
+      status.textContent = i18nMsg("form_status_sending");
       status.className = "form-status";
 
       fetch(FORM_ENDPOINT, {
@@ -246,7 +257,7 @@
       })
         .then(function (res) {
           if (res.ok) {
-            status.textContent = "Thanks! Your inquiry has been sent. We will reply within 24 hours.";
+            status.textContent = i18nMsg("form_status_thanks");
             status.className = "form-status ok";
             form.reset();
           } else {
@@ -254,7 +265,7 @@
           }
         })
         .catch(function () {
-          status.textContent = "Network error. Please use the Copy email button below to reach us at Leo@gfiretech.com.";
+          status.textContent = i18nMsg("form_status_neterr");
           status.className = "form-status err";
         });
     });
