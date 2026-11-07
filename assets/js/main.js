@@ -546,3 +546,30 @@
     pStartAuto();
   }
 })();
+
+  /* ---------- 全局视频：仅点击播放、滚动离屏暂停、切后台暂停、互斥 ---------- */
+  (function () {
+    var videos = Array.prototype.slice.call(document.querySelectorAll("video"));
+    if (!videos.length) return;
+    function pauseOthers(current) {
+      videos.forEach(function (v) {
+        if (v !== current && !v.paused) v.pause();
+      });
+    }
+    videos.forEach(function (v) {
+      v.addEventListener("play", function () { pauseOthers(v); });
+    });
+    if ("IntersectionObserver" in window) {
+      var vo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting && !e.target.paused) e.target.pause();
+        });
+      }, { threshold: 0.15 });
+      videos.forEach(function (v) { vo.observe(v); });
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        videos.forEach(function (v) { if (!v.paused) v.pause(); });
+      }
+    });
+  })();

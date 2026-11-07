@@ -256,6 +256,10 @@
       /* ---------- 通用 ---------- */
       bread_home: "Home",
       lang_label: "Language",
+      factory_t: "Memory Module Production",
+      factory_s: "A look at the memory module manufacturing and quality process behind the products we source.",
+      factory_cap1: "Memory module assembly and production line",
+      factory_cap2: "Memory module testing and quality inspection",
       svc_eyebrow: "Our Services",
       svc_h1: "China Product Development & Sourcing Services",
       ver_eyebrow: "China Supplier Verification & Factory Audit",
@@ -509,6 +513,10 @@
       /* ---------- Общее ---------- */
       bread_home: "Главная",
       lang_label: "Язык",
+      factory_t: "Производство модулей памяти",
+      factory_s: "Ознакомьтесь с процессом производства и контроля качества модулей памяти, стоящим за поставляемой нами продукцией.",
+      factory_cap1: "Линия сборки и производства модулей памяти",
+      factory_cap2: "Тестирование и проверка качества модулей памяти",
       svc_eyebrow: "Наши услуги",
       svc_h1: "Услуги по разработке продукта и закупкам в Китае",
       ver_eyebrow: "Проверка поставщиков и аудит заводов в Китае",
