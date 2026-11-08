@@ -290,10 +290,14 @@ a:hover { text-decoration: underline; }
 .product-variants img.active { border-color: var(--accent); border-width: 2px; transform: scale(1.04); box-shadow: 0 0 0 2px rgba(245,135,31,0.18); }
 .product-video {
   margin: 0 0 16px;
+  display: flex;
+  justify-content: center;
 }
 .product-video video {
   width: 100%;
+  max-width: 460px;
   aspect-ratio: 16 / 9;
+  object-fit: contain;
   border-radius: 8px;
   display: block;
   background: #f5f6f8;
@@ -407,6 +411,7 @@ a:hover { text-decoration: underline; }
 }
 .case-track, .product-track {
   display: flex; overflow-x: auto;
+  align-items: flex-start;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
