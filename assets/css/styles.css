@@ -207,7 +207,7 @@ a:hover { text-decoration: underline; }
 .section-sub.light { color: var(--on-dark-muted); margin: 14px 0 0; }
 
 /* ---------- SECTION 03 核心能力 ---------- */
-.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; align-items: start; }
 .service-card {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
   padding: 28px 24px; transition: transform .15s, box-shadow .15s, border-color .15s;

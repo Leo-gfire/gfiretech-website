@@ -86,12 +86,14 @@
   border-radius: 10px;
   background: var(--bg-alt);
   border: 1px solid var(--border);
-  padding: 10px;
+  padding: 6px;
   box-sizing: border-box;
 }
+/* 竖构图产品照（如服务器 RDIMM）用更接近原比例的画框，减少两侧留白 */
+.prod-photo.portrait { aspect-ratio: 3 / 4; }
 
 /* ---------- New landing page: two-up product photo gallery ---------- */
-.prod-photo-row { display: flex; gap: 10px; }
+.prod-photo-row { display: flex; gap: 8px; }
 .prod-photo-row .prod-photo { flex: 1 1 0; min-width: 0; }
 
 /* ---------- New landing page: brand chips (additional brands) ---------- */
