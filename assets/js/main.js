@@ -558,6 +558,11 @@
     }
     videos.forEach(function (v) {
       v.addEventListener("play", function () { pauseOthers(v); });
+      // 状态 3：视频播放完毕时自动停止，并回到起始帧（显示 poster，便于重播）
+      v.addEventListener("ended", function () {
+        try { v.currentTime = 0; } catch (e) {}
+        v.pause();
+      });
     });
     if ("IntersectionObserver" in window) {
       var vo = new IntersectionObserver(function (entries) {
